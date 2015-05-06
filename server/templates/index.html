@@ -1,0 +1,62 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html>
+<html ng-app="lotos">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Флористический салон "Белый Лотос"</title>
+    <link rel="stylesheet" href="client/resources/styles/kube.min.css"/>
+    <link rel="stylesheet" href="client/resources/styles/lotos.css"/>
+</head>
+<body>
+    <div id="header">
+        <div id="cart">
+            <div id="cart-icon">
+                <span class="badge badge-red right">4</span>
+            </div>
+            <span id="empty-cart">В Вашей корзине пока ничего нет</span>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div id="sidebar"></div>
+        <div id="content">
+
+            <div class="bouquet">
+                <div class="bouquet-img">
+                    <img src="client/resources/img/test1.jpg" alt=""/>
+                </div>
+                <div class="bouquet-info">
+                    <div class="bouquet-title">Ландыши и сено</div>
+                    <div class="bouquet-price">1500</div>
+                </div>
+            </div>
+
+            <div class="bouquet">
+                <div class="bouquet-img"></div>
+                <div class="bouquet-info"></div>
+            </div>
+            <div class="bouquet">
+                <div class="bouquet-img"></div>
+                <div class="bouquet-info"></div>
+            </div>
+            <div class="bouquet">
+                <div class="bouquet-img"></div>
+                <div class="bouquet-info"></div>
+            </div>
+            <div class="bouquet"></div>
+            <div class="bouquet"></div>
+            <div class="bouquet"></div>
+            <div class="bouquet"></div>
+            <div class="bouquet"></div>
+        </div>
+    </div>
+
+    <script src="client/libs/angularjs/angular.min.js"></script>
+    <script src="client/libs/angularjs/angular-route.min.js"></script>
+    <script src="client/libs/angularjs/angular-cookies.min.js"></script>
+    <script src="client/libs/momentjs/moment-with-locales.min.js"></script>
+    <script src="client/modules/classes.js"></script>
+    <script src="client/modules/lotos.js"></script>
+    <script src="client/modules/lotos.cart.js"></script>
+</body>
+</html>
+<!-- END: main -->

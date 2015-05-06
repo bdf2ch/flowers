@@ -1,0 +1,206 @@
+@min-width: 1200px;
+@header-height: 50px;
+@sidebar-width: 250px;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#header {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  min-width: @min-width;
+  height: @header-height;
+  //z-index: 2;
+  background: whitesmoke;
+  border-bottom: 1px solid lightgrey;
+
+  #cart {
+    position: relative;
+    float: right;
+    width: 180px;
+    //height: @header-height - 10px;
+    height: 200px;
+    margin-right: 20px;
+    padding: 5px;
+    vertical-align: middle;
+    z-index: 3;
+    border: 1px solid red;
+
+    #cart-icon {
+      position: relative;
+      display: inline-block;
+      float: left;
+      width: 36px;
+      height: 36px;
+      margin-top: 2px;
+      margin-right: 5px;
+      background: url("../img/cart2_36px.png") center center;
+      background-repeat: no-repeat;
+      //border: 1px solid black;
+
+      .badge {
+        margin-top: -3px;
+        margin-right: -3px;
+      }
+    }
+
+    #empty-cart {
+      position: relative;
+      display: block;
+      height: 30px;
+      margin-left: 50px;
+      padding-top: 7px;
+      padding-right: 5px;
+      font-family: "Verdana";
+      font-size: 13px;
+      line-height: 13px;
+      color: grey;
+      //border: 1px solid red;
+    }
+  }
+}
+
+#wrapper {
+  position: absolute;
+  overflow: hidden;
+  top: @header-height + 1px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  min-width: 1000px + @sidebar-width;
+  //height: 100%;
+  //margin-top: @header-height;
+  //padding: 10px;
+  //z-index: 1;
+  //border: 1px solid green;
+}
+
+#sidebar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  //float: left;
+  width: @sidebar-width;
+  height: 100%;
+  background: #F0F0F0;
+  //border: 1px solid red;
+}
+
+
+#content {
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  left: @sidebar-width;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  //float: left;
+  //height: 100%;
+  //margin-left: @sidebar-width;
+  padding: 10px;
+  //text-align: center;
+  //background: cornsilk;
+  //border: 1px solid blue;
+}
+
+
+
+
+
+.bouquet {
+  float: left;
+  width: 25%;
+  height: 250px;
+  //margin-right: 2%;
+  margin-bottom: 10px;
+  //padding-left: 5px;
+  //padding-right: 5px;
+  //background: mintcream;
+  //border: 1px solid darkgray;
+}
+.bouquet-img {
+  height: 200px;
+  margin-left: 5px;
+  margin-right: 5px;
+  //background: url("../img/test1.jpg") center center;
+  //background-repeat: no-repeat;
+  border: 1px solid red;
+
+  img {
+    display: block;
+    position: relative;
+    //width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+}
+.bouquet-info {
+  height: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid blue;
+
+  .bouquet-title {
+    position: relative;
+    float: left;
+    height: 100%;
+    margin-right: 110px;
+    border: 1px solid gray;
+  }
+
+  .bouquet-price {
+    position: relative;
+    float: right;
+    clear: left;
+    width: 100px;
+    height: 100%;
+    border: 1px solid green;
+  }
+}
+
+
+/*** MISC ***/
+//.badge {
+//  display: inline-block;
+//  width: 18px;
+//  height: 18px;
+//  text-align: center;
+//  font-family: "Lucida Grande";
+  //font-size: 14px;
+//  font-weight: bold;
+//  line-height: 19px;
+//  border-radius: 18px;
+
+  //&.error {
+  //  color: white;
+  //  background: tomato;
+ // }
+//}
+
+
+/*** ALIGNS ***/
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
