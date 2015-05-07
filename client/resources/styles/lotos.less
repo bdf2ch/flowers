@@ -57,6 +57,7 @@ html, body {
       margin-left: 50px;
       padding-top: 7px;
       padding-right: 5px;
+      text-align: center;
       font-family: "Verdana";
       font-size: 13px;
       line-height: 13px;
@@ -116,56 +117,110 @@ html, body {
 
 
 .bouquet {
-  float: left;
-  width: 25%;
-  height: 250px;
-  //margin-right: 2%;
-  margin-bottom: 10px;
-  //padding-left: 5px;
-  //padding-right: 5px;
-  //background: mintcream;
-  //border: 1px solid darkgray;
+  //float: left;
+  //width: 25%;
+  height: 280px;
+  //margin-bottom: 10px;
+  //border: 1px solid transparent;
+  border-radius: 2px;
+  border: 1px solid #F2F2F2;
+
+  &:hover {
+    border: 1px solid #F2F2F2;
+  }
+
+  .bouquet-title {
+    //text-align: le;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    font-family: 'Lobster', cursive;
+    font-size: 22px;
+    line-height: 17px;
+    color: #134da5;
+  }
 }
 .bouquet-img {
-  height: 200px;
-  margin-left: 5px;
-  margin-right: 5px;
-  //background: url("../img/test1.jpg") center center;
-  //background-repeat: no-repeat;
-  border: 1px solid red;
+  height: 250px;
+  overflow: auto;
+  //margin-left: 5px;
+  //margin-right: 5px;
+  //border: 1px solid red;
 
   img {
     display: block;
     position: relative;
+    //float: left;
+    clear: both;
     //width: 100%;
-    height: 100%;
+    height: 220px;
     margin-left: auto;
     margin-right: auto;
 
   }
+
+  .bouquet-labels {
+    display: block;
+    float: right;
+    clear: both;
+    margin-left: -50px;
+    border: 1px solid black;
+  }
 }
+
+
+
 .bouquet-info {
-  height: 40px;
-  margin-left: 5px;
-  margin-right: 5px;
-  border: 1px solid blue;
+  //height: 50px;
+  //margin-left: 5px;
+  //margin-right: 5px;
+  padding: 5px;
+  //border: 1px solid blue;
+
+  .btn {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 
   .bouquet-title {
-    position: relative;
-    float: left;
-    height: 100%;
-    margin-right: 110px;
-    border: 1px solid gray;
+    display: inline-block;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .bouquet-title {
+    display: inline-block;
+    margin-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+    line-height: 17px;
+    color: #134da5;
   }
 
   .bouquet-price {
+    display: inline-block;
     position: relative;
-    float: right;
-    clear: left;
-    width: 100px;
-    height: 100%;
-    border: 1px solid green;
+    padding-top: 5px;
+    //float: right;
+    //clear: left;
+    //width: 150px;
+    //height: 40px;
+    //margin-right: 5px;
+    text-align: center;
+    vertical-align: middle;
+    //color: #134da5;
+    //margin-top: -40px;
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+    //background: url("../img/price-tag_small.png");
+    //border: 1px solid green;
   }
+
 }
 
 
