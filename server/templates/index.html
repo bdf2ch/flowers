@@ -10,6 +10,7 @@
 </head>
 <body>
     <div id="header">
+        <div id="logo"></div>
         <div id="cart">
             <div id="cart-icon">
                 <span class="badge badge-red right">4</span>
@@ -18,19 +19,15 @@
         </div>
     </div>
     <div id="wrapper">
-        <div id="sidebar"></div>
+        <div id="sidebar" ng-include="$sidebar.template" ng-controller="SidebarController"></div>
         <div id="content">
-
+            {{ sidebar.template }}
 
                 <div class="units-row">
                     <ul class="blocks-4">
 
                         <li class="bouquet">
-                            <div class="units-row end bouquet-title">
-                                <div class="units-row end">
-                                    <span class="bouquet-title">Букет из 25 роз</span>
-                                </div>
-                            </div>
+
                             <div class="units-row end bouquet-img">
                                     <a href="">
                                         <img src="client/resources/img/test1.jpg" alt=""/>
@@ -41,6 +38,11 @@
                                         <span class="label label-green right">Скидка 10%</span>
                                     </div>
                                     -->
+                            </div>
+                            <div class="units-row end text-centered bouquet-title">
+                                <div class="units-row end">
+                                    <span class="bouquet-title">Букет из 25 роз</span>
+                                </div>
                             </div>
                             <div class="units-row end bouquet-info">
                                     <div class="unit-50 text-centered">
@@ -53,11 +55,12 @@
                         </li>
 
                         <li class="bouquet">
-                            <div class="units-row end bouquet-title">
+                            <!--<div class="units-row end bouquet-title">
                                 <div class="units-row end">
                                     <span class="bouquet-title">Букет из 25 роз</span>
                                 </div>
                             </div>
+                            -->
                             <div class="units-row end bouquet-img">
                                 <a href="">
                                     <img src="client/resources/img/test1.jpg" alt=""/>
@@ -68,6 +71,11 @@
                                     <span class="label label-green right">Скидка 10%</span>
                                 </div>
                                 -->
+                            </div>
+                            <div class="units-row end text-centered bouquet-title">
+                                <div class="units-row end">
+                                    <span class="bouquet-title">Букет из 25 роз</span>
+                                </div>
                             </div>
                             <div class="units-row end bouquet-info">
                                 <div class="unit-50 text-centered">
@@ -96,6 +104,7 @@
     <script src="client/libs/momentjs/moment-with-locales.min.js"></script>
     <script src="client/modules/classes.js"></script>
     <script src="client/modules/lotos.js"></script>
+    <script src="client/modules/lotos.sidebar.js"></script>
     <script src="client/modules/lotos.cart.js"></script>
 </body>
 </html>

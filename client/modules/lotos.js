@@ -4,13 +4,16 @@
 
 "use strict";
 
-var lotos = angular.module("lotos", ["lotos.cart"])
+var lotos = angular.module("lotos", ["lotos.sidebar", "lotos.cart"])
     .config(function ($provide) {
-        $provide.factory("$lotos", [function () {
+        $provide.factory("$lotos", ["$rootScope", "$sidebar", function ($rootScope, $sidebar) {
             var module =  {};
 
             module.items = [];
             module.totalPrice = 0;
+            module.test = "dhjfyjhjhj";
+
+            $rootScope.sidebar = $sidebar;
 
             /*** Добавляет элемент в конец массива покупок ***/
             module.add = function (item) {
