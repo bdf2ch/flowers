@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="client/resources/styles/lotos.css"/>
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body ng-controller="AppController">
     <div id="header">
         <div id="logo"></div>
         <div id="cart">
@@ -19,9 +19,8 @@
         </div>
     </div>
     <div id="wrapper">
-        <div id="sidebar" ng-include="$sidebar.template" ng-controller="SidebarController"></div>
+        <div id="sidebar" ng-include="sidebar.template" ng-controller="SidebarController"></div>
         <div id="content">
-            {{ sidebar.template }}
 
                 <div class="units-row">
                     <ul class="blocks-4">

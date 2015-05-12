@@ -41,3 +41,8 @@ var lotos = angular.module("lotos", ["lotos.sidebar", "lotos.cart"])
     .run(function ($log) {
         $log.log("app started");
     });
+
+
+lotos.controller("AppController", ["$log", "$scope", "$sidebar", function ($log, $scope, $sidebar) {
+    $scope.sidebar = $sidebar;
+}]);
