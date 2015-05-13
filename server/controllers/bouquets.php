@@ -4,7 +4,7 @@
 
     mb_internal_encoding("UTF-8");
 
-    $postdata = file_get_contents('php://input');
+    $postdata = json_decode(file_get_contents('php://input'));
     $action = $postdata -> action;
     $connection = mysql_connect('mysql.lotos51.myjino.ru', 'lotos51', 'l1mpb1zk1t');
     if (!$connection) {
@@ -27,6 +27,7 @@
     /***  Возвращает список букетов ***/
     function get_bouquets ($postdata) {
         $result = array();
+        global $connection;
 
         $query = mysql_query('SELECT * FROM bouquets');
         if (!$query) {

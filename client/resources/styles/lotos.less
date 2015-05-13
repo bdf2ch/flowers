@@ -1,6 +1,6 @@
 @min-width: 1200px;
 @header-height: 50px;
-@sidebar-width: 250px;
+@sidebar-width: 300px;
 
 html, body {
   width: 100%;
@@ -37,7 +37,7 @@ html, body {
     float: right;
     width: 180px;
     //height: @header-height - 10px;
-    height: 200px;
+    height: 50px;
     margin-right: 20px;
     padding: 5px;
     vertical-align: middle;
@@ -95,10 +95,10 @@ html, body {
 }
 
 #sidebar {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
+  //position: absolute;
+  //top: 0px;
+  //left: 0px;
+  //bottom: 0px;
   //float: left;
   width: @sidebar-width;
   height: 100%;
@@ -127,7 +127,7 @@ html, body {
   position: absolute;
   overflow-x: hidden;
   overflow-y: scroll;
-  left: @sidebar-width;
+  left: 0px;
   top: 0px;
   bottom: 0px;
   right: 0px;
@@ -137,7 +137,11 @@ html, body {
   padding: 10px;
   //text-align: center;
   //background: cornsilk;
-  //border: 1px solid blue;
+  //
+
+  .pagination {
+    margin-bottom: 10px !important;
+  }
 }
 
 
@@ -152,9 +156,10 @@ html, body {
   //border: 1px solid transparent;
   border-radius: 2px;
   border: 1px solid #F2F2F2;
+  border-bottom: 1px solid lightgrey;
 
   &:hover {
-    border: 1px solid #F2F2F2;
+    border: 1px solid #FFC800;
   }
 
   .bouquet-title {
@@ -169,6 +174,7 @@ html, body {
     color: #134da5;
   }
 }
+
 .bouquet-img {
   height: 250px;
   overflow: auto;
@@ -200,15 +206,20 @@ html, body {
 
 
 .bouquet-info {
-  //height: 50px;
+  height: 60px;
   //margin-left: 5px;
   //margin-right: 5px;
   padding: 5px;
+  vertical-align: middle;
   //border: 1px solid blue;
+  //background: url("../img/wood.png");
+  background: #EFF2ED;
 
   .btn {
     padding-left: 5px;
     padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 2px;
   }
 
   .bouquet-title {
@@ -216,7 +227,7 @@ html, body {
     text-align: center;
     font-family: Verdana;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 55px;
   }
 
   .bouquet-title {
@@ -231,9 +242,9 @@ html, body {
   }
 
   .bouquet-price {
-    display: inline-block;
+    display: block;
     position: relative;
-    padding-top: 5px;
+    //padding-top: 5px;
     //float: right;
     //clear: left;
     //width: 150px;
@@ -244,7 +255,8 @@ html, body {
     //color: #134da5;
     //margin-top: -40px;
     font-family: 'Lobster', cursive;
-    font-size: 26px;
+    font-size: 22px;
+    color: #237f35;
     //background: url("../img/price-tag_small.png");
     //border: 1px solid green;
   }
