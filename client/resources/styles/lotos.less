@@ -20,6 +20,18 @@ html, body {
   background: whitesmoke;
   border-bottom: 1px solid lightgrey;
 
+  #logo {
+    position: relative;
+    float: left;
+    height: @header-height;
+    z-index: 3;
+    padding-top: 10px;
+
+    img {
+      height: 80px;
+    }
+  }
+
   #cart {
     position: relative;
     float: right;
@@ -90,7 +102,7 @@ html, body {
   //float: left;
   width: @sidebar-width;
   height: 100%;
-  padding-top: 10px;
+  padding-top: 50px;
   padding-bottom: 10px;
   padding-left: 5px;
   //padding-right: 5px;
@@ -281,6 +293,7 @@ html, body {
 
 /*** SIDEBARS ***/
 .filter {
+  padding: 5px;
   background: #d3e3fb;
   border-radius: 2px;
 }

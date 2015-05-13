@@ -2,14 +2,16 @@
 
     include "../config.php";
 
+    mb_internal_encoding("UTF-8");
+
     $postdata = file_get_contents('php://input');
     $action = $postdata -> action;
-    $connection = mysql_connect($dbhost, $dbuser, $dbpassword);
+    $connection = mysql_connect('mysql.lotos51.myjino.ru', 'lotos51', 'l1mpb1zk1t');
     if (!$connection) {
-        die('Ошибка соединения: ' . mysql_error());
+        die('РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ: ' .mysql_error().mysql_errno());
     } else {
-        if (!mysql_select_db('lotos51', $connection)) {
-            die ('Не удалось выбрать базу: ' . mysql_error());
+        if (!mysql_select_db($db_name, $connection)) {
+            die ('РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹Р±СЂР°С‚СЊ Р±Р°Р·Сѓ: ' . mysql_error());
         } else {
             mysql_query("SET NAMES 'utf8'");
         }
@@ -22,13 +24,13 @@
             break;
     };
 
-    /***  Возвращает список букетов ***/
+    /***  Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р±СѓРєРµС‚РѕРІ ***/
     function get_bouquets ($postdata) {
         $result = array();
 
         $query = mysql_query('SELECT * FROM bouquets');
         if (!$query) {
-            die('Неверный запрос: ' . mysql_error());
+            die('РќРµРІРµСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ: ' . mysql_error());
         } else {
             while ($row = mysql_fetch_assoc($query)) {
                 array_push($result, $row);

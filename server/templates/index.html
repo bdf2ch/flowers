@@ -10,7 +10,9 @@
 </head>
 <body ng-controller="AppController">
     <div id="header">
-        <div id="logo"></div>
+        <div id="logo">
+            <img src="client/resources/img/logo.png" alt="Флористический салон Белый Лотос"/>
+        </div>
         <div id="cart">
             <div id="cart-icon">
                 <span class="badge badge-red right">4</span>
@@ -20,78 +22,9 @@
     </div>
     <div id="wrapper">
         <div id="sidebar" ng-include="sidebar.template" ng-controller="SidebarController"></div>
-        <div id="content">
-
-                <div class="units-row">
-                    <ul class="blocks-4">
-
-                        <li class="bouquet">
-
-                            <div class="units-row end bouquet-img">
-                                    <a href="">
-                                        <img src="client/resources/img/test1.jpg" alt=""/>
-                                    </a>
-                                    <!--
-                                    <div class="bouquet-labels">
-                                        <span class="label label-red right">ХИТ ПРОДАЖ</span>
-                                        <span class="label label-green right">Скидка 10%</span>
-                                    </div>
-                                    -->
-                            </div>
-                            <div class="units-row end text-centered bouquet-title">
-                                <div class="units-row end">
-                                    <span class="bouquet-title">Букет из 25 роз</span>
-                                </div>
-                            </div>
-                            <div class="units-row end bouquet-info">
-                                    <div class="unit-50 text-centered">
-                                        <span class="bouquet-price">1750 р.</span>
-                                    </div>
-                                    <div class="unit-50">
-                                        <button class="btn btn-small btn-yellow right width-100">В корзину</button>
-                                    </div>
-                            </div>
-                        </li>
-
-                        <li class="bouquet">
-                            <!--<div class="units-row end bouquet-title">
-                                <div class="units-row end">
-                                    <span class="bouquet-title">Букет из 25 роз</span>
-                                </div>
-                            </div>
-                            -->
-                            <div class="units-row end bouquet-img">
-                                <a href="">
-                                    <img src="client/resources/img/test1.jpg" alt=""/>
-                                </a>
-                                <!--
-                                <div class="bouquet-labels">
-                                    <span class="label label-red right">ХИТ ПРОДАЖ</span>
-                                    <span class="label label-green right">Скидка 10%</span>
-                                </div>
-                                -->
-                            </div>
-                            <div class="units-row end text-centered bouquet-title">
-                                <div class="units-row end">
-                                    <span class="bouquet-title">Букет из 25 роз</span>
-                                </div>
-                            </div>
-                            <div class="units-row end bouquet-info">
-                                <div class="unit-50 text-centered">
-                                    <span class="bouquet-price">1750 р.</span>
-                                </div>
-                                <div class="unit-50">
-                                    <button class="btn btn-small btn-yellow right width-100">В корзину</button>
-                                </div>
-                            </div>
-                        </li>
+        <div id="content" ng-view>
 
 
-
-
-
-                    </ul>
-                </div>
             </div>
 
         </div>
@@ -105,6 +38,7 @@
     <script src="client/modules/lotos.js"></script>
     <script src="client/modules/lotos.sidebar.js"></script>
     <script src="client/modules/lotos.cart.js"></script>
+    <script src="client/modules/lotos.bouquets.js"></script>
 </body>
 </html>
 <!-- END: main -->

@@ -4,9 +4,15 @@
 
 "use strict";
 
-var lotos = angular.module("lotos", ["lotos.sidebar", "lotos.cart"])
-    .config(function ($provide) {
-        $provide.factory("$lotos", ["$rootScope", "$sidebar", function ($rootScope, $sidebar) {
+var lotos = angular.module("lotos", ["ngRoute", "lotos.sidebar", "lotos.cart", "lotos.bouquets"])
+    .config(function ($provide, $routeProvider) {
+        $routeProvider
+            .when("/", {
+                templateUrl: "client/templates/bouquets/bouquets.html",
+                controller: "BouquetsController"})
+            .otherwise({ redirectTo: '/' });
+
+        $provide.factory("$lotos", ["$routeProvider", "$rootScope", "$sidebar", function ($routeProvider, $rootScope, $sidebar) {
             var module =  {};
 
             module.items = [];
@@ -34,6 +40,8 @@ var lotos = angular.module("lotos", ["lotos.sidebar", "lotos.cart"])
                     });
                 }
             };
+
+
 
             return module;
         }]);
