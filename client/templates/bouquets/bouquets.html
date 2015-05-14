@@ -1,139 +1,166 @@
-<div class="units-row">
-    <div class="unit" id="sidebar">
-        sdfsdf
-    </div>
-    <div class="unit">
-        <div class="units-row end">
-            <div class="unit-row end">
-                <ul class="pagination right">
-                    <li><a href="#">&larr;</a></li>
-                    <li><span>..</span></li>
-                    <li><a href="#">...</a></li>
-                    <li><a href="#">&rarr;</a></li>
-                </ul>
+<div class="units-row end">
+    <div id="sidebar" class="unit-20">
+
+        <!-- Повод -->
+        <div class="units-row">
+            <div class="units-row end">
+                <div class="unit-100">
+                    <span class="sidebar-caption">Повод</span>
+                </div>
+            </div>
+            <div class="units-row end">
+                <div class="unit-100">
+                    <a href class="sidebar-link"
+                       ng-class="{'active' : reason.isActive === true}"
+                       ng-repeat="reason in bouquets.reasons"
+                       ng-click="bouquets.setReason(2)">{{ reason }}</a>
+                </div>
             </div>
         </div>
 
+        <!-- Адресат -->
         <div class="units-row">
-            <div class="unit-row">
-                <ul class="blocks-4">
-                    <li ng-repeat="bouquet in bouquets.items" class="bouquet">
-                        <div class="units-row end bouquet-img">
-                            <a href="">
-                                <img src="client/resources/img/test1.jpg" alt=""/>
-                            </a>
-                            <!--
-                            <div class="bouquet-labels">
-                                <span class="label label-red right">ХИТ ПРОДАЖ</span>
-                                <span class="label label-green right">Скидка 10%</span>
+            <div class="units-row end">
+                <div class="unit-100">
+                    <span class="sidebar-caption">Адресат</span>
+                </div>
+            </div>
+            <div class="units-row end">
+                <div class="unit-100">
+                    <a href class="sidebar-link"
+                       ng-repeat="addressee in bouquets.addressees"
+                       ng-class="{'active' : addressee.isActive === true}"
+                       ng-click="bouquets.setAddressee(addressee.id.value)">{{ addressee }}</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Цветы в составе -->
+        <div class="units-row">
+            <div class="units-row end">
+                <div class="unit-100">
+                    <span class="sidebar-caption">Цветы в букете</span>
+                </div>
+            </div>
+            <div class="units-row end">
+                <div class="unit-100">
+                    <select class="width-90 centered" name="" id="">
+                        <option value="1">от 1000 р. до 2000 р.</option>
+                        <option value="1">от 2000 р. до 3000 р.</option>
+                        <option value="1">от 3000 р. до 4000 р.</option>
+                        <option value="1">от 4000 р. до 5000 р.</option>
+                        <option value="1">от 5000 р.</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Цена -->
+        <div class="units-row">
+            <div class="units-row end">
+                <div class="unit-100">
+                    <span class="sidebar-caption">Цена букета</span>
+                </div>
+            </div>
+            <div class="units-row end">
+                <div class="unit-100">
+                    <select class="width-90 centered" name="" id="">
+                        <option value="1">от 1000 р. до 2000 р.</option>
+                        <option value="1">от 2000 р. до 3000 р.</option>
+                        <option value="1">от 3000 р. до 4000 р.</option>
+                        <option value="1">от 4000 р. до 5000 р.</option>
+                        <option value="1">от 5000 р.</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="unit-80">
+
+        <div class="units-row end">
+
+            <div class="units-row end">
+                <div class="unit-100">
+                    <ul class="pagination right">
+                        <li ng-show="bouquets.currentPage > 1">
+                            <a href title="Предыдущая страница" ng-click="bouquets.prevPage()">&larr;</a>
+                        </li>
+                        <li ng-show="(bouquets.currentPage - 1) > 0">
+                            <a href ng-click="bouquets.setPage(bouquets.currentPage - 1)">{{ bouquets.currentPage - 1 }}</a>
+                        </li>
+                        <li class="active-page">
+                            <a href ng-click="bouquets.setPage(bouquets.currentPage)">{{ bouquets.currentPage }}</a>
+                        </li>
+                        <li ng-show="(bouquets.currentPage + 1) <= bouquets.pages">
+                            <a href ng-click="bouquets.setPage(bouquets.currentPage + 1)">{{ bouquets.currentPage + 1 }}</a>
+                        </li>
+                        <li ng-show="bouquets.currentPage < bouquets.pages">
+                            <a href title="Следующая страница" ng-click="bouquets.nextPage()">&rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="units-row end">
+                <div class="unit-100">
+                    <ul class="blocks-4">
+                        <li ng-repeat="bouquet in bouquets.items" class="bouquet">
+                            <!-- Изображение букета -->
+                            <div class="units-row end bouquet-img">
+                                <a href="">
+                                    <img src="client/resources/img/test1.jpg" alt="{{ bouquet.title.value }}"/>
+                                </a>
+                                <!--
+                                <div class="bouquet-labels">
+                                    <span class="label label-red right">ХИТ ПРОДАЖ</span>
+                                    <span class="label label-green right">Скидка 10%</span>
+                                </div>
+                                -->
                             </div>
-                            -->
-                        </div>
-
-                        <div class="units-row end bouquet-info">
-
-                            <!--
-                            <div class="units-row end text-centered bouquet-title">
-                                <div class="units-row end">
+                            <!-- Информация о букете -->
+                            <div class="units-row end bouquet-info">
+                                <div class="unit-60">
                                     <span class="bouquet-title">Букет из 25 роз и говна</span>
                                 </div>
-                            </div>
-                            -->
-                            <div class="unit-60">
-                                <span class="bouquet-title">Букет из 25 роз и говна</span>
-                            </div>
-                            <div class="unit-40">
-                                <button class="btn btn-small btn-yellow right width-100">
-                                    <span class="bouquet-price">1750 р.</span>
-                                    В корзину</button>
-                            </div>
-
-                            <!--
-                            <div class="units-row end text-centered">
-                                <span class="bouquet-title">Букет из 25 роз и говна</span>
-                            </div>
-
-                            <div class="units-row end">
-                                <div class="unit-50 text-centered">
-                                    <span class="bouquet-price">1750 р.</span>
-                                </div>
-                                <div class="unit-50">
-                                    <button class="btn btn-small btn-yellow right width-100">В корзину</button>
+                                <div class="unit-40">
+                                    <button class="btn btn-small btn-yellow right width-100">
+                                        <span class="bouquet-price">1750 р.</span>
+                                        В корзину
+                                    </button>
                                 </div>
                             </div>
-                            -->
+                        </li>
 
-                        </div>
-                    </li>
-
-                </ul>
+                    </ul>
+                </div>
             </div>
+
+            <div class="units-row end">
+                <div class="unit-100">
+                    <ul class="pagination right">
+                        <li ng-show="bouquets.currentPage > 1">
+                            <a href title="Предыдущая страница" ng-click="bouquets.prevPage()">&larr;</a>
+                        </li>
+                        <li ng-show="(bouquets.currentPage - 1) > 0">
+                            <a href ng-click="bouquets.setPage(bouquets.currentPage - 1)">{{ bouquets.currentPage - 1 }}</a>
+                        </li>
+                        <li class="active-page">
+                            <a href ng-click="bouquets.setPage(bouquets.currentPage)">{{ bouquets.currentPage }}</a>
+                        </li>
+                        <li ng-show="(bouquets.currentPage + 1) <= bouquets.pages">
+                            <a href ng-click="bouquets.setPage(bouquets.currentPage + 1)">{{ bouquets.currentPage + 1 }}</a>
+                        </li>
+                        <li ng-show="bouquets.currentPage < bouquets.pages">
+                            <a href title="Следующая страница" ng-click="bouquets.nextPage()">&rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
+
     </div>
 </div>
 
-<div class="units-row end">
-    <div class="unit-row end">
-        <ul class="pagination right">
-            <li><a href="#">&larr;</a></li>
-            <li><span>..</span></li>
-            <li><a href="#">...</a></li>
-            <li><a href="#">&rarr;</a></li>
-        </ul>
-    </div>
-</div>
-<div class="units-row">
-    <div class="unit-row">
-        <ul class="blocks-4">
-            <li ng-repeat="bouquet in bouquets.items" class="bouquet">
-                <div class="units-row end bouquet-img">
-                    <a href="">
-                        <img src="client/resources/img/test1.jpg" alt=""/>
-                    </a>
-                    <!--
-                    <div class="bouquet-labels">
-                        <span class="label label-red right">ХИТ ПРОДАЖ</span>
-                        <span class="label label-green right">Скидка 10%</span>
-                    </div>
-                    -->
-                </div>
-
-                <div class="units-row end bouquet-info">
-
-                    <!--
-                    <div class="units-row end text-centered bouquet-title">
-                        <div class="units-row end">
-                            <span class="bouquet-title">Букет из 25 роз и говна</span>
-                        </div>
-                    </div>
-                    -->
-                    <div class="unit-60">
-                        <span class="bouquet-title">Букет из 25 роз и говна</span>
-                    </div>
-                    <div class="unit-40">
-                        <button class="btn btn-small btn-yellow right width-100">
-                            <span class="bouquet-price">1750 р.</span>
-                            В корзину</button>
-                    </div>
-
-                    <!--
-                    <div class="units-row end text-centered">
-                        <span class="bouquet-title">Букет из 25 роз и говна</span>
-                    </div>
-
-                    <div class="units-row end">
-                        <div class="unit-50 text-centered">
-                            <span class="bouquet-price">1750 р.</span>
-                        </div>
-                        <div class="unit-50">
-                            <button class="btn btn-small btn-yellow right width-100">В корзину</button>
-                        </div>
-                    </div>
-                    -->
-
-                </div>
-            </li>
-
-        </ul>
-    </div>
-</div>

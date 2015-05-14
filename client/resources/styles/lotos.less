@@ -3,19 +3,25 @@
 @sidebar-width: 300px;
 
 html, body {
+  overflow: visible;
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
+  //background: url("../img/bg02.gif");
 }
 
 #header {
   position: absolute;
+  z-index: 10;
   left: 0px;
   right: 0px;
   top: 0px;
-  min-width: @min-width;
+  width: 1250px;
+  //min-width: @min-width;
   height: @header-height;
+  margin-left: auto;
+  margin-right: auto;
   //z-index: 2;
   background: whitesmoke;
   border-bottom: 1px solid lightgrey;
@@ -81,17 +87,23 @@ html, body {
 
 #wrapper {
   position: absolute;
-  overflow: hidden;
-  top: @header-height + 1px;
+  overflow-y: scroll;
+  top: @header-height;
   left: 0px;
   bottom: 0px;
   right: 0px;
-  min-width: 1000px + @sidebar-width;
+  //margin-top: @header-height;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 1250px;
+  //min-width: 1000px + @sidebar-width;
   //height: 100%;
   //margin-top: @header-height;
   //padding: 10px;
   //z-index: 1;
   //border: 1px solid green;
+  border-left: 1px solid lightcyan;
 }
 
 #sidebar {
@@ -100,47 +112,113 @@ html, body {
   //left: 0px;
   //bottom: 0px;
   //float: left;
-  width: @sidebar-width;
+  //width: @sidebar-width;
   height: 100%;
-  padding-top: 50px;
+  margin-top: 40px;
+  margin-right: -20px;
+  //padding-top: 50px;
   padding-bottom: 10px;
-  padding-left: 5px;
+  padding-left: 10px;
+  padding-top: 10px;
   //padding-right: 5px;
-  //background: #F0F0F0;
+  background: url("../img/ornament1.png") top left #DEF6FF;
+  background-repeat: repeat-y;
   //border: 1px solid red;
+  border-radius: 2px;
 
   select {
-    display: block;
-    width: 230px;
-    margin-left: auto;
-    margin-right: auto;
+    //display: block;
+    //width: 230px;
+    //margin-left: 5px;
+    //margin-right: 5px;
     padding-top: 5px !important;
     padding-bottom: 5px !important;
 
     //margin-left: 5px;
     //margin-right: 5px;
   }
+
+  .sidebar-caption {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+    color: #4EC0ED;
+  }
+
+  .sidebar-link {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 0px;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+    text-decoration: none;
+    border-bottom: 1px dotted blue;
+
+    &:hover {
+      color: #dd1144;
+      border-bottom: 1px dotted #dd1144;
+    }
+
+    &.active {
+      color: #dd1144;
+      border-bottom: 1px dotted #dd1144;
+    }
+  }
 }
 
 
 #content {
-  position: absolute;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
+  //position: absolute;
+  //overflow-x: hidden;
+  //overflow-y: scroll;
+  //left: 0px;
+  //top: 0px;
+  //bottom: 0px;
+  //right: 0px;
   //float: left;
   //height: 100%;
   //margin-left: @sidebar-width;
+  //margin-top: @header-height - 25px;
+  padding-top: 0px;
   padding: 10px;
   //text-align: center;
   //background: cornsilk;
   //
+  //background: #F7FAFC;
 
   .pagination {
     margin-bottom: 10px !important;
+
+    a {
+      background: transparent !important;
+      color: black;
+      border-radius: 2px;
+
+      //&:hover {
+       // background: #FFC800 !important;
+      //}
+    }
+
+
+    li {
+      background: transparent !important;
+      border: 1px solid transparent;
+
+      &:hover {
+        //background: #FFC800 !important;
+        border: 1px solid #FFC800;
+      }
+
+      &.active-page {
+        font-weight: bold;
+        background: #FFC800 !important;
+        border-radius: 2px;
+
+        &:hover {
+          border: 1px solid transparent;
+        }
+      }
+    }
   }
 }
 
@@ -157,6 +235,7 @@ html, body {
   border-radius: 2px;
   border: 1px solid #F2F2F2;
   border-bottom: 1px solid lightgrey;
+  background: white;
 
   &:hover {
     border: 1px solid #FFC800;
@@ -188,7 +267,7 @@ html, body {
     //float: left;
     clear: both;
     //width: 100%;
-    height: 220px;
+    height: 250px;
     margin-left: auto;
     margin-right: auto;
 
@@ -222,13 +301,13 @@ html, body {
     padding-bottom: 2px;
   }
 
-  .bouquet-title {
-    display: inline-block;
-    text-align: center;
-    font-family: Verdana;
-    font-size: 14px;
-    line-height: 55px;
-  }
+  //.bouquet-title {
+  //  display: inline-block;
+  //  text-align: center;
+  //  font-family: Verdana;
+  //  font-size: 14px;
+  //  line-height: 20px;
+  //}
 
   .bouquet-title {
     display: inline-block;
@@ -237,7 +316,7 @@ html, body {
     text-align: center;
     font-family: 'Lobster', cursive;
     font-size: 18px;
-    line-height: 17px;
+    line-height: 20px;
     color: #134da5;
   }
 
@@ -263,6 +342,13 @@ html, body {
 
 }
 
+
+
+
+/*** FOOTER ***/
+#footer {
+  border: 1px solid red;
+}
 
 /*** MISC ***/
 //.badge {

@@ -9,6 +9,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
 </head>
 <body ng-controller="AppController">
+
     <div id="header">
         <div id="logo">
             <img src="client/resources/img/logo.png" alt="Флористический салон Белый Лотос"/>
@@ -20,14 +21,17 @@
             <span id="empty-cart">Ваша корзина пуста</span>
         </div>
     </div>
+
     <div id="wrapper">
         <!--
         <div id="sidebar" ng-include="sidebar.template" ng-controller="SidebarController"></div>
         -->
         <div id="content" ng-view></div>
+        <div id="footer">footer</div>
 
-        </div>
-    </div>
+   </div>
+
+
 
     <script src="client/libs/angularjs/angular.min.js"></script>
     <script src="client/libs/angularjs/angular-route.min.js"></script>
@@ -35,6 +39,7 @@
     <script src="client/libs/momentjs/moment-with-locales.min.js"></script>
     <script src="client/modules/classes.js"></script>
     <script src="client/modules/lotos.js"></script>
+    <script src="client/modules/lotos.filters.js"></script>
     <script src="client/modules/lotos.sidebar.js"></script>
     <script src="client/modules/lotos.cart.js"></script>
     <script src="client/modules/lotos.bouquets.js"></script>
