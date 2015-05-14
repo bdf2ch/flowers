@@ -2,7 +2,7 @@
 
 
 var filters = angular.module("lotos.filters", [])
-    .config(function ($filterProvider) {
+    .config(function ($filterProvider, $provide) {
 
         /* Фильтр букетов по поводу */
         $filterProvider.register("reason", ["$log", function ($log) {
@@ -39,6 +39,7 @@ var filters = angular.module("lotos.filters", [])
                     return input;
             };
         }]);
+
     })
     .run(function ($log) {
         $log.log("filters module");

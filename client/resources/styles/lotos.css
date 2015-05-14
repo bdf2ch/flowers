@@ -27,7 +27,9 @@ body {
   padding-top: 10px;
 }
 #header #logo img {
+  display: block;
   height: 80px;
+  border: 1px solid red;
 }
 #header #cart {
   position: relative;
@@ -78,7 +80,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 1250px;
-  border-left: 1px solid lightcyan;
+  border-left: 1px solid lightgrey;
 }
 #sidebar {
   height: 100%;
@@ -116,6 +118,7 @@ body {
 }
 #sidebar .sidebar-link.active {
   color: #dd1144;
+  font-weight: bold;
   border-bottom: 1px dotted #dd1144;
 }
 #content {
@@ -201,9 +204,10 @@ body {
   margin-left: 5px;
   padding-right: 5px;
   text-align: center;
+  text-overflow: ellipsis;
   font-family: 'Lobster', cursive;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 18px;
   color: #134da5;
 }
 .bouquet-info .bouquet-price {
@@ -220,6 +224,10 @@ body {
   border: 1px solid red;
 }
 /*** MISC ***/
+.clip {
+  overflow: auto;
+  text-overflow: ellipsis;
+}
 /*** ALIGNS ***/
 .left {
   float: left;

@@ -5,12 +5,8 @@ var bouquets = angular.module("lotos.bouquets", [])
 
             /* Наборы данных */
             module.items = [];
-            module.reasons = [
-                "Юбилей", "Свадьба", "День рождения", "Комплимент"
-            ];
-            module.addressees = [
-                "Женщине/девушке", "Мужчине", "Семье", "Коллективу", "Деловому партнеру"
-            ];
+            module.reasons = [];
+            module.addressees = [];
 
             /* Пагинация */
             module.pages = 0;
@@ -21,6 +17,7 @@ var bouquets = angular.module("lotos.bouquets", [])
             module.activeReasonsId = 0;
             module.activeAddresseId = 0;
 
+            /* Получает список всех букетов */
             module.get = function () {
                 var params = {
                     action: "get",
@@ -34,7 +31,7 @@ var bouquets = angular.module("lotos.bouquets", [])
                         if (data !== undefined) {
                             angular.forEach(data, function (bouquet) {
                                 var temp_bouquet = new Bouquet();
-
+                                temp_bouquet.fromJSON(bouquet);
                                 module.items.push(temp_bouquet);
                             });
                             module.pages = Math.ceil(module.items.length / module.limit);
@@ -43,21 +40,21 @@ var bouquets = angular.module("lotos.bouquets", [])
                 );
             };
 
-            /* Переход на предыдущую страницу с букетами */
+            /* РџРµСЂРµС…РѕРґ РЅР° РїСЂРµРґС‹РґСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЃ Р±СѓРєРµС‚Р°РјРё */
             module.prevPage = function () {
                 if (module.currentPage > 1 ) {
                     module.currentPage--;
                 }
             };
 
-            /* Переход на следующую страницу с букетами */
+            /* РџРµСЂРµС…РѕРґ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЃ Р±СѓРєРµС‚Р°РјРё */
             module.nextPage = function () {
                 if (module.currentPage < module.pages) {
                     module.currentPage++;
                 }
             };
 
-            /* Переход на указанную страницу с букетами */
+            /* РџРµСЂРµС…РѕРґ РЅР° СѓРєР°Р·Р°РЅРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЃ Р±СѓРєРµС‚Р°РјРё */
             module.setPage = function (pageNumber) {
                 if (pageNumber !== undefined && pageNumber > 0) {
                     module.currentPage = pageNumber;
@@ -65,7 +62,7 @@ var bouquets = angular.module("lotos.bouquets", [])
                 }
             };
 
-            /* Выбор повода */
+            /* Выбор активного повода для подарка букета */
             module.setReason = function (reasonId) {
                 if (reasonId !== undefined) {
                     $log.log("id = ", reasonId);
@@ -79,12 +76,14 @@ var bouquets = angular.module("lotos.bouquets", [])
                                 reason.isActive = false;
                                 module.activeReasonId = 0;
                             }
+                        } else {
+                            reason.isActive = false;
                         }
                     });
                 }
             };
 
-            /* Выбор адресата */
+            /* Р’С‹Р±РѕСЂ Р°РґСЂРµСЃР°С‚Р° */
             module.setAddressee = function (addresseeId) {
                 if (addresseeId !== undefined) {
                     angular.forEach(module.addressees, function (addressee) {
@@ -101,15 +100,49 @@ var bouquets = angular.module("lotos.bouquets", [])
                 }
             };
 
+            module.init = function () {
+                $http.post("server/controllers/init.php", {})
+                    .success(function (data) {
+                        if (data !== undefined) {
+                            $log.log(data);
+                            if (data["reasons"] !== undefined) {
+                                angular.forEach(data["reasons"], function (reason) {
+                                    var temp_reason = new Reason();
+                                    temp_reason.fromJSON(reason);
+                                    module.reasons.push(temp_reason);
+                                });
+                            }
+                            if (data["addressees"] !== undefined) {
+                                angular.forEach(data["addressees"], function (addressee) {
+                                    var temp_addressee = new Addressee();
+                                    temp_addressee.fromJSON(addressee);
+                                    module.addressees.push(temp_addressee);
+                                });
+                            }
+                            if (data["bouquets"] !== undefined) {
+                                angular.forEach(data["bouquets"], function (bouquet) {
+                                    var temp_bouquet = new Bouquet();
+                                    temp_bouquet.fromJSON(bouquet);
+                                    module.items.push(temp_bouquet);
+                                });
+                            }
+                        }
+                    }
+                );
+            };
+
             return module;
         }]);
+    })
+    .run(function ($bouquets) {
+        $bouquets.init();
     });
 
 
 bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", function ($log, $scope, $bouquets) {
     $scope.bouquets = $bouquets;
 
-    if ($scope.bouquets.items.length === 0) {
-        $scope.bouquets.get();
-    }
+    //if ($scope.bouquets.items.length === 0) {
+    //    $scope.bouquets.get();
+   // }
 }]);

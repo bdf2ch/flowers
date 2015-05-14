@@ -34,7 +34,9 @@ html, body {
     padding-top: 10px;
 
     img {
+      display: block;
       height: 80px;
+      border: 1px solid red;
     }
   }
 
@@ -103,7 +105,8 @@ html, body {
   //padding: 10px;
   //z-index: 1;
   //border: 1px solid green;
-  border-left: 1px solid lightcyan;
+  border-left: 1px solid lightgrey;
+  //border-right: 1px solid lightgrey;
 }
 
 #sidebar {
@@ -161,6 +164,7 @@ html, body {
 
     &.active {
       color: #dd1144;
+      font-weight: bold;
       border-bottom: 1px dotted #dd1144;
     }
   }
@@ -314,9 +318,10 @@ html, body {
     margin-left: 5px;
     padding-right: 5px;
     text-align: center;
+    text-overflow: ellipsis;
     font-family: 'Lobster', cursive;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 18px;
     color: #134da5;
   }
 
@@ -351,6 +356,10 @@ html, body {
 }
 
 /*** MISC ***/
+.clip {
+  overflow: auto;
+  text-overflow: ellipsis;
+}
 //.badge {
 //  display: inline-block;
 //  width: 18px;

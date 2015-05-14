@@ -13,7 +13,7 @@
                     <a href class="sidebar-link"
                        ng-class="{'active' : reason.isActive === true}"
                        ng-repeat="reason in bouquets.reasons"
-                       ng-click="bouquets.setReason(2)">{{ reason }}</a>
+                       ng-click="bouquets.setReason(reason.id.value)">{{ reason.title.value }}</a>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     <a href class="sidebar-link"
                        ng-repeat="addressee in bouquets.addressees"
                        ng-class="{'active' : addressee.isActive === true}"
-                       ng-click="bouquets.setAddressee(addressee.id.value)">{{ addressee }}</a>
+                       ng-click="bouquets.setAddressee(addressee.id.value)">{{ addressee.title.value }}</a>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
 
             <div class="units-row end">
                 <div class="unit-100">
-                    <ul class="blocks-4">
+                    <ul class="blocks-3">
                         <li ng-repeat="bouquet in bouquets.items" class="bouquet">
                             <!-- Изображение букета -->
                             <div class="units-row end bouquet-img">
@@ -121,12 +121,12 @@
                             </div>
                             <!-- Информация о букете -->
                             <div class="units-row end bouquet-info">
-                                <div class="unit-60">
-                                    <span class="bouquet-title">Букет из 25 роз и говна</span>
+                                <div class="unit-60 clip">
+                                    <span class="bouquet-title">{{ bouquet.title.value }}</span>
                                 </div>
                                 <div class="unit-40">
                                     <button class="btn btn-small btn-yellow right width-100">
-                                        <span class="bouquet-price">1750 р.</span>
+                                        <span class="bouquet-price">{{ bouquet.price.value + " р." }}</span>
                                         В корзину
                                     </button>
                                 </div>

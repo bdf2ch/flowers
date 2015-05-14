@@ -12,36 +12,18 @@ var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar"
                 controller: "BouquetsController"})
             .otherwise({ redirectTo: '/' });
 
-        $provide.factory("$lotos", ["$routeProvider", "$rootScope", "$sidebar", function ($routeProvider, $rootScope, $sidebar) {
+        $provide.factory("$lotos", ["$http", function ($http) {
             var module =  {};
 
-            module.items = [];
-            module.totalPrice = 0;
-            module.test = "dhjfyjhjhj";
-
-            $rootScope.sidebar = $sidebar;
-
-            /*** Добавляет элемент в конец массива покупок ***/
-            module.add = function (item) {
-                if (item !== undefined) {
-                    this.append(item);
-                    module.totalPrice += item.price.value;
-                }
-            };
-
-            /*** Удаляет элемнт из массива покупок ***/
-            module.delete = function (id) {
-                if (id !== undefined) {
-                    angular.forEach(module.items, function (item, key) {
-                        if (item.id.value === id) {
-                            module.items.splice(key, 1);
-                            module.totalPrice -= item.price.value;
+            module.init = function () {
+                $http.post("server/controllers/init.php", {})
+                    .success(function (data) {
+                        if (data !== undefined) {
+                            
                         }
-                    });
-                }
+                    }
+                );
             };
-
-
 
             return module;
         }]);
