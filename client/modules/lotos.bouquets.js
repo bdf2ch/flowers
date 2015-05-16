@@ -146,3 +146,8 @@ bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", functi
     //    $scope.bouquets.get();
    // }
 }]);
+
+
+bouquets.controller("BouquetController", ["$log", "$scope", "$bouquets", function ($log, $scope, $bouquets) {
+    $scope.bouquets = $bouquets;
+}]);

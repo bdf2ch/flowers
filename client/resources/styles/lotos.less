@@ -1,5 +1,6 @@
 @min-width: 1200px;
 @header-height: 50px;
+@footer-height: 50px;
 @sidebar-width: 300px;
 
 html, body {
@@ -8,12 +9,12 @@ html, body {
   height: 100%;
   margin: 0px;
   padding: 0px;
-  //background: url("../img/bg02.gif");
+  background: url("../img/bg02.gif");
 }
 
 #header {
   position: absolute;
-  z-index: 10;
+  z-index: 4;
   left: 0px;
   right: 0px;
   top: 0px;
@@ -25,6 +26,9 @@ html, body {
   //z-index: 2;
   background: whitesmoke;
   border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 
   #logo {
     position: relative;
@@ -36,7 +40,7 @@ html, body {
     img {
       display: block;
       height: 80px;
-      border: 1px solid red;
+      //border: 1px solid red;
     }
   }
 
@@ -97,6 +101,7 @@ html, body {
   //margin-top: @header-height;
   margin-left: auto;
   margin-right: auto;
+  //margin-bottom: -50px;
 
   width: 1250px;
   //min-width: 1000px + @sidebar-width;
@@ -107,6 +112,8 @@ html, body {
   //border: 1px solid green;
   border-left: 1px solid lightgrey;
   //border-right: 1px solid lightgrey;
+  background: white;
+  box-shadow: 0 1px 10px rgba(2,0,0,0.1);
 }
 
 #sidebar {
@@ -173,16 +180,19 @@ html, body {
 
 #content {
   //position: absolute;
-  //overflow-x: hidden;
+  //overflow-x: visible;
   //overflow-y: scroll;
   //left: 0px;
   //top: 0px;
   //bottom: 0px;
   //right: 0px;
   //float: left;
-  //height: 100%;
+  z-index: 5;
+  height: 100%;
+  min-height: 600px;
   //margin-left: @sidebar-width;
   //margin-top: @header-height - 25px;
+  margin-bottom: -50px;
   padding-top: 0px;
   padding: 10px;
   //text-align: center;
@@ -352,7 +362,21 @@ html, body {
 
 /*** FOOTER ***/
 #footer {
-  border: 1px solid red;
+  height: @footer-height;
+  margin-bottom: -50px;
+  //margin-right: -20px;
+  background: whitesmoke;
+  //border-top: 1px solid lightgrey;
+  //border-left: 1px solid lightgrey;
+  //border-right: 1px solid lightgrey;
+  //border: 1px solid red;
+
+  .copyrights {
+    padding-top: 12px;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 /*** MISC ***/

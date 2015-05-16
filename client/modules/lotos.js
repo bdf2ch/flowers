@@ -10,6 +10,10 @@ var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar"
             .when("/", {
                 templateUrl: "client/templates/bouquets/bouquets.html",
                 controller: "BouquetsController"})
+            .when("/bouquet/:bouquetId", {
+                templateUrl: "client/templates/bouquet/bouquet.html",
+                controller: "BouquetController"
+            })
             .otherwise({ redirectTo: '/' });
 
         $provide.factory("$lotos", ["$http", function ($http) {
