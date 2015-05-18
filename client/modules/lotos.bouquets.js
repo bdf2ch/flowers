@@ -7,6 +7,9 @@ var bouquets = angular.module("lotos.bouquets", [])
             module.items = [];
             module.reasons = [];
             module.addressees = [];
+            module.flowers = [];
+            module.additions = [];
+            module.images = [];
 
             /* Пагинация */
             module.pages = 0;
@@ -100,11 +103,16 @@ var bouquets = angular.module("lotos.bouquets", [])
                 }
             };
 
+            /**
+             * Инициализация наборов данных
+             */
             module.init = function () {
                 $http.post("server/controllers/init.php", {})
                     .success(function (data) {
                         if (data !== undefined) {
                             $log.log(data);
+
+                            /* Инициализация массива поводов */
                             if (data["reasons"] !== undefined) {
                                 angular.forEach(data["reasons"], function (reason) {
                                     var temp_reason = new Reason();
@@ -112,6 +120,8 @@ var bouquets = angular.module("lotos.bouquets", [])
                                     module.reasons.push(temp_reason);
                                 });
                             }
+
+                            /* Инициализация массива адресатов */
                             if (data["addressees"] !== undefined) {
                                 angular.forEach(data["addressees"], function (addressee) {
                                     var temp_addressee = new Addressee();
@@ -119,11 +129,40 @@ var bouquets = angular.module("lotos.bouquets", [])
                                     module.addressees.push(temp_addressee);
                                 });
                             }
+
+                            /* Инициализация массива букетов */
                             if (data["bouquets"] !== undefined) {
                                 angular.forEach(data["bouquets"], function (bouquet) {
                                     var temp_bouquet = new Bouquet();
                                     temp_bouquet.fromJSON(bouquet);
                                     module.items.push(temp_bouquet);
+                                });
+                            }
+
+                            /* Инициализация массива цветов, входящих в состав букета */
+                            if (data["flowers"] !== undefined) {
+                                angular.forEach(data["flowers"], function (flower) {
+                                    var temp_flower = new Flower();
+                                    temp_flower.fromJSON(flower);
+                                    module.flowers.push(temp_flower);
+                                });
+                            }
+
+                            /* Инициализация массива добавок к букету */
+                            if (data["additions"] !== undefined) {
+                                angular.forEach(data["additions"], function (addition) {
+                                    var temp_addition = new Addition();
+                                    temp_addition.fromJSON(addition);
+                                    module.additions.push(temp_addition);
+                                });
+                            }
+
+                            /* Инициализация массива изображений букетов */
+                            if (data["images"] !== undefined) {
+                                angular.forEach(data["images"], function (image) {
+                                    var temp_image = new BouquetImage();
+                                    temp_image.fromJSON(image);
+                                    module.images.push(temp_image);
                                 });
                             }
                         }
@@ -148,6 +187,18 @@ bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", functi
 }]);
 
 
-bouquets.controller("BouquetController", ["$log", "$scope", "$bouquets", function ($log, $scope, $bouquets) {
+bouquets.controller("BouquetController", ["$log", "$scope", "$routeParams", "$bouquets", function ($log, $scope, $routeParams, $bouquets) {
     $scope.bouquets = $bouquets;
+    $scope.bouquet = undefined;
+
+    if ($routeParams.bouquetId !== undefined) {
+        angular.forEach($scope.bouquets.items, function (bouquet) {
+            if (bouquet.id.value === $routeParams.bouquetId)
+                $scope.bouquet = bouquet;
+        });
+    }
+
+    if ($scope.bouquet !== undefined) {
+        $log.log($scope.bouquet);
+    }
 }]);

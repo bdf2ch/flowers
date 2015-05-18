@@ -109,7 +109,7 @@
                         <li ng-repeat="bouquet in bouquets.items" class="bouquet">
                             <!-- Изображение букета -->
                             <div class="units-row end bouquet-img">
-                                <a href="">
+                                <a href="{{ '#/bouquet/' + bouquet.id.value }}">
                                     <img src="client/resources/img/test1.jpg" alt="{{ bouquet.title.value }}"/>
                                 </a>
                                 <!--

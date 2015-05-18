@@ -27,8 +27,10 @@ function Bouquet () {
     this.price = new Field({ source: "price", value: 0 });
     this.image_url = new Field({ source: "image_url", value: "" });
     this.flowers = [];
+    this.additions = [];
     this.reasons = [];
     this.addressees = [];
+    this.images = [];
 
     this.fromJSON = function (JSONdata) {
         if (JSONdata !== undefined) {
@@ -50,6 +52,18 @@ function Bouquet () {
                 }
             }
 
+            /* Инициализация массива Добавок к букету, входящих в состав букета */
+            if (JSONdata["additions"] !== undefined) {
+                var length = JSONdata["additions"].length;
+                var i = 0;
+
+                for (i = 0; i < length; i++) {
+                    var temp_addition = new Addition();
+                    temp_addition.fromJSON(JSONdata["additions"][i]);
+                    this.additions.push(temp_addition);
+                }
+            }
+
             /* Инициализация массива поводов для дарения букета */
             if (JSONdata["reasons"] !== undefined) {
                 var length = JSONdata["reasons"].length;
@@ -62,6 +76,7 @@ function Bouquet () {
                 }
             }
 
+            /* Инициализация массива адресатов букета */
             if (JSONdata["addressees"] !== undefined) {
                 var length = JSONdata["addressees"].length;
                 var i = 0;
@@ -70,6 +85,18 @@ function Bouquet () {
                     var temp_addressee = new Addressee();
                     temp_addressee.fromJSON(JSONdata["addressees"][i]);
                     this.addressees.push(temp_addressee);
+                }
+            }
+
+            /* Инициализация массива изображений букета */
+            if (JSONdata["images"] !== undefined) {
+                var length = JSONdata["images"].length;
+                var i = 0;
+
+                for (i = 0; i < length; i++) {
+                    var temp_image = new BouquetImage();
+                    temp_image.fromJSON(JSONdata["images"][i]);
+                    this.images.push(temp_image);
                 }
             }
         }
@@ -180,6 +207,44 @@ function Addressee () {
         if (JSONdata !== undefined) {
             this.id.value = parseInt(JSONdata["id"]);
             this.title.value = JSONdata["title"];
+        }
+    };
+};
+
+
+/**
+ * Добавки к букеты
+ * @constructor
+ */
+function Addition () {
+    this.id = new Field({ source: "id", value: 0 });
+    this.title = new Field({ source: "title", value: "" });
+    this.description = new Field({ source: "description", value: "" });
+
+    this.fromJSON = function (JSONdata) {
+        if (JSONdata !== undefined) {
+            this.id.value = parseInt(JSONdata[this.id.source]);
+            this.title.value = JSONdata[this.title.source];
+            this.description.value = JSONdata[this.description.source];
+        }
+    };
+};
+
+
+/**
+ * Изображение букета
+ * @constructor
+ */
+function BouquetImage () {
+    this.id = new Field({ source: "id", value: 0 });
+    this.bouquetId = new Field({ source: "bouquet_id", value: 0 });
+    this.url = new Field ({ source: "url", value: "" });
+
+    this.fromJSON = function (JSONdata) {
+        if (JSONdata !== undefined) {
+            this.id.value = parseInt(JSONdata[this.id.source]);
+            this.bouquetId.value = parseInt(JSONdata[this.bouquetId.source]);
+            this.url = JSONdata[this.url.source];
         }
     };
 };
