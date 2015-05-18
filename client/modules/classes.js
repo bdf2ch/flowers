@@ -109,11 +109,11 @@ function Bouquet () {
  * @constructor
  */
 function Flower () {
-    this.id = 0;
-    this.title = "";
-    this.price = 0;
+    this.id = new Field({ source: "id", value: 0 });
+    this.title = new Field({ source: "title", value: "" });
+    this.price = new Field({ source: "price", value: 0 });
 
-    this.formJSON = function (JSONdata) {
+    this.fromJSON = function (JSONdata) {
         if (JSONdata !== undefined) {
             this.id.value = parseInt(JSONdata["id"]);
             this.title.value = JSONdata["title"];

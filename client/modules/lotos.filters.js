@@ -40,6 +40,25 @@ var filters = angular.module("lotos.filters", [])
             };
         }]);
 
+
+        /* Ôèëüòğ áóêåòîâ ïî ñòğàíèöàì ïàãèíàöèè */
+        $filterProvider.register("paginator", ["$log", function ($log) {
+            return function (input, limit, pageNumber) {
+                if (input.length > 0 && limit !== undefined && pageNumber !== undefined) {
+                    $log.log("limit = ", limit);
+                    $log.log("pageNumber = ", pageNumber);
+                    var bouquets = [];
+                    var start = (pageNumber * limit) - limit + 1;
+                    angular.forEach(input, function (bouquet, key) {
+                        if (key >= start && key <= (start + limit) - 1)
+                            bouquets.push(bouquet);
+                    });
+                    return bouquets;
+                } else
+                    return input;
+            };
+        }]);
+
     })
     .run(function ($log) {
         $log.log("filters module");

@@ -39,7 +39,7 @@ body {
   float: right;
   width: 180px;
   height: 50px;
-  margin-right: 20px;
+  margin-right: 5px;
   padding: 5px;
   vertical-align: middle;
   z-index: 3;
@@ -63,7 +63,7 @@ body {
   position: relative;
   display: block;
   height: 30px;
-  margin-left: 50px;
+  margin-left: 40px;
   padding-top: 7px;
   padding-right: 5px;
   text-align: center;
@@ -128,6 +128,7 @@ body {
   margin-bottom: -50px;
   padding-top: 0px;
   padding: 10px;
+  background: #FCFCFC;
 }
 #content .pagination {
   margin-bottom: 10px !important;

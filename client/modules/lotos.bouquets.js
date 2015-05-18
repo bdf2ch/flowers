@@ -137,6 +137,7 @@ var bouquets = angular.module("lotos.bouquets", [])
                                     temp_bouquet.fromJSON(bouquet);
                                     module.items.push(temp_bouquet);
                                 });
+                                module.pages = Math.ceil(module.items.length / module.limit);
                             }
 
                             /* Инициализация массива цветов, входящих в состав букета */

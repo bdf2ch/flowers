@@ -44,13 +44,10 @@
             </div>
             <div class="units-row end">
                 <div class="unit-100">
-                    <select class="width-90 centered" name="" id="">
-                        <option value="1">от 1000 р. до 2000 р.</option>
-                        <option value="1">от 2000 р. до 3000 р.</option>
-                        <option value="1">от 3000 р. до 4000 р.</option>
-                        <option value="1">от 4000 р. до 5000 р.</option>
-                        <option value="1">от 5000 р.</option>
-                    </select>
+                    <a href class="sidebar-link"
+                       ng-repeat="flower in bouquets.flowers"
+                       ng-class="{'active' : flower.isActive === true}"
+                       ng-click="bouquets.setAddressee(flower.id.value)">{{ flower.title.value }}</a>
                 </div>
             </div>
         </div>
@@ -106,7 +103,7 @@
             <div class="units-row end">
                 <div class="unit-100">
                     <ul class="blocks-3">
-                        <li ng-repeat="bouquet in bouquets.items" class="bouquet">
+                        <li ng-repeat="bouquet in bouquets.items | paginator:bouquets.limit:bouquets.currentPage" class="bouquet">
                             <!-- Изображение букета -->
                             <div class="units-row end bouquet-img">
                                 <a href="{{ '#/bouquet/' + bouquet.id.value }}">
