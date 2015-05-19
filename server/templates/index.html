@@ -11,15 +11,62 @@
 <body ng-controller="AppController">
 
     <div id="header">
-        <div id="logo">
-            <img src="client/resources/img/logo.png" alt="Флористический салон Белый Лотос"/>
-        </div>
-        <div id="cart">
-            <div id="cart-icon">
-                <span class="badge badge-red right">4</span>
+        <div class="units-row units-split">
+            <div id="logo" class="unit-33">
+                <img src="client/resources/img/logo.png" alt="Флористический салон Белый Лотос"/>
             </div>
-            <span id="empty-cart">Ваша корзина пуста</span>
+
+            <div id="menu" class="unit-33">
+
+                <nav class="navbar navbar-pills">
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </nav>
+                <!--
+                <div class="units-row end">
+                    <div class="unit-30 text-centered">
+                        <a href="">О нас</a>
+                    </div>
+                    <div class="unit-30 text-centered">
+                        <a href="">Доставка и оплата</a>
+                    </div>
+                    <div class="unit-30 text-centered">
+                        <a href="">Наши контакты</a>
+                    </div>
+                </div>
+                -->
+            </div>
+
+
+
+
+
+            <div id="user-panel" class="unit-33">
+                <div class="units-row end units-split">
+                    <!-- Пользователь -->
+                    <div id="user" class="unit-50">
+                        <div class="units-row end">
+                            <div id="user-icon" class="unit-30"></div>
+                            <div class="unit-70"></div>
+                        </div>
+                    </div>
+                    <!-- Корзина -->
+                    <div id="cart" class="unit-50">
+                        <div id="cart-icon">
+                            <span class="badge badge-red right"
+                                  ng-show="cart.items.length > 0">{{ cart.items.length }}
+                            </span>
+                        </div>
+                        <span id="empty-cart"
+                              ng-show="cart.items.length === 0">Ваша корзина пуста</span>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <div id="wrapper">
@@ -36,7 +83,24 @@
             <div class="unit-25 text-left copyrights">&copy; флористический салон «Белый лотос»<br>
                 &nbsp; &nbsp; 2015 г.
             </div>
-            <div class="unit-25"></div>
+            <div class="unit-40">
+                <div class="units-row end units-split">
+                    <div class="unit-33 text-centered">
+                        <a href="">О нас</a>
+                    </div>
+                    <div class="unit-33 text-centered">
+                        <a href="">Доставка и оплата</a>
+                    </div>
+                    <div class="unit-33 text-centered">
+                        <a href="">Контакты</a>
+                    </div>
+                </div>
+            </div>
+            <div class="unit-35">
+                <div class="unit-100 text-right">
+                    <a href="">Напишите нам письмо</a>
+                </div>
+            </div>
         </div>
     </div>
 

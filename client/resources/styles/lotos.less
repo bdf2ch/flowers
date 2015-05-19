@@ -24,7 +24,8 @@ html, body {
   margin-left: auto;
   margin-right: auto;
   //z-index: 2;
-  background: whitesmoke;
+  background: url("../img/orn.png") top left #FAB83E;
+  background-repeat: repeat-x;
   border-bottom: 1px solid lightgrey;
   border-left: 1px solid lightgrey;
   border-right: 1px solid lightgrey;
@@ -44,16 +45,73 @@ html, body {
     }
   }
 
+  #menu {
+
+    a {
+      //display: inline-block;
+      //padding-top: 7px;
+      margin-top: 7px;
+      margin-left: 10px;
+      padding: 5px !important;
+      padding-left: 8px !important;
+      font-family: 'Lobster', cursive;
+      font-size: 20px;
+      text-decoration: none;
+      //line-height: 17px;
+      color: white !important;
+      text-shadow: rgb(0, 0, 0) 0px 1px 0px;
+      border-radius: 5px;
+
+      &:hover {
+        color: #367ac3;
+        background: #51a7c9;
+      }
+    }
+
+  }
+
+
+#user-panel {
+  background: #FACA70;
+}
+
+  #user {
+    height: 50px;
+    padding: 5px;
+
+
+    #user-icon {
+      //position: relative;
+      //display: inline-block;
+      //float: left;
+      width: 36px;
+      height: 36px;
+      //vertical-align: middle;
+      margin-top: 2px;
+      //margin-right: 5px;
+      background: url("../img/user_36px.png") center center;
+      background-repeat: no-repeat;
+      //border: 1px solid black;
+
+      .badge {
+        margin-top: -3px;
+        margin-right: -3px;
+      }
+    }
+  }
+
   #cart {
     position: relative;
     float: right;
     width: 180px;
     //height: @header-height - 10px;
     height: 50px;
-    margin-right: 5px;
+    //margin-right: 5px;
     padding: 5px;
     vertical-align: middle;
     z-index: 3;
+    background: #FACA70;
+    //opacity: 0.5;
     //border: 1px solid red;
 
     #cart-icon {
@@ -85,7 +143,7 @@ html, body {
       font-family: "Verdana";
       font-size: 13px;
       line-height: 13px;
-      color: grey;
+      color: black;
       //border: 1px solid red;
     }
   }
@@ -103,7 +161,7 @@ html, body {
   margin-top: @header-height;
   margin-left: auto;
   margin-right: auto;
-  height: 100%;
+  //height: 100%;
   //margin-bottom: @footer-height;
   //margin-bottom: -50px;
 
@@ -369,14 +427,16 @@ html, body {
 #footer {
   position: relative;
   height: @footer-height;
-  width: @min-width;
+  width: @min-width + 20px;
   //margin-bottom: -50px;
   margin-left: auto;
   margin-right: auto;
   margin-top: -50px;
   //margin-right: -20px;
-  background: whitesmoke;
-  border-top-left-radius: 2px;
+  background: #FAB83E;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: url("../img/orn.png") top left #FAB83E;
   //border-top: 1px solid lightgrey;
   //border-left: 1px solid lightgrey;
   //border-right: 1px solid lightgrey;
@@ -388,6 +448,20 @@ html, body {
     font-size: 12px;
     line-height: 15px;
   }
+
+  a {
+    display: inline-block;
+    height: 32px;
+    padding-top: 10px;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px dotted black;
+
+    &:hover {
+      color: red;
+      border-bottom: 1px dotted red;
+    }
+  }
 }
 
 
@@ -396,13 +470,16 @@ html, body {
   padding-top: 40px;
 
   img {
-    height: 300px;
-    //border: 1px solid lightgrey;
+    height: 450px;
+    border: 1px solid #FFC800;
+    border-radius: 2px;
   }
 
   ul {
     img {
-      height: 70px;
+      height: 80px;
+      border: 1px solid lightgrey;
+      border-radius: 2px;
 
       &:hover {
         border: 1px solid #FFC800;
@@ -421,10 +498,26 @@ html, body {
   }
 
   .bouquet-price {
+    display: inline-block;
+    margin-top: 10px;
     margin-bottom: 15px;
     font-family: 'Lobster', cursive;
-    font-size: 35px;
-    color: blue;
+    font-size: 40px;
+    color: #F74D63;
+  }
+
+  .bouquet-flowers {
+    line-height: 22px;
+    margin-bottom: 7px !important;
+
+    img {
+      width: 50px;
+      height: 50px;
+      padding: 2px;
+      background: white;
+      border: 2px solid #FFC800;
+      border-radius: 50px;
+    }
   }
 }
 
@@ -434,7 +527,12 @@ html, body {
   padding: 10px;
   border-radius: 2px;
 
+  &.same-price {
+    background: #DDEDDD;
+  }
+
   .title {
+    margin-bottom: 10px !important;
     font-family: 'Lobster', cursive;
     font-size: 20px;
     color: #1a52a5;
@@ -443,6 +541,33 @@ html, body {
   img {
     height: 130px;
     border: 1px solid lightgrey;
+  }
+
+  ul {
+    margin-bottom: 0px !important;
+  }
+}
+
+.service-info {
+  line-height: 20px;
+  //font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  //font-size: 16px;
+  font-family: 'Lobster', cursive;
+  font-size: 17px;
+  color: #A39E95;
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .service-content {
+    padding-top: 10px;
+  }
+
+  .caption {
+    font-size: 20px;
+    color: #0869A6;
   }
 }
 
@@ -486,6 +611,20 @@ html, body {
   text-align: right;
 }
 
+.bottom {
+  vertical-align: bottom;
+}
+
+
+
+/*** COLORS ***/
+.black {
+  color: black;
+}
+
+.grey {
+  color: grey;
+}
 
 
 
