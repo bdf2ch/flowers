@@ -12,12 +12,14 @@
 
     <div id="header">
         <div class="units-row units-split">
+
+            <!-- Логотип -->
             <div id="logo" class="unit-33">
                 <img src="client/resources/img/logo.png" alt="Флористический салон Белый Лотос"/>
             </div>
 
+            <!-- Меню -->
             <div id="menu" class="unit-33">
-
                 <nav class="navbar navbar-pills">
                     <ul>
                         <li><a href="#">О нас</a></li>
@@ -25,25 +27,9 @@
                         <li><a href="#">Контакты</a></li>
                     </ul>
                 </nav>
-                <!--
-                <div class="units-row end">
-                    <div class="unit-30 text-centered">
-                        <a href="">О нас</a>
-                    </div>
-                    <div class="unit-30 text-centered">
-                        <a href="">Доставка и оплата</a>
-                    </div>
-                    <div class="unit-30 text-centered">
-                        <a href="">Наши контакты</a>
-                    </div>
-                </div>
-                -->
             </div>
 
-
-
-
-
+            <!-- Пользователь и корзина -->
             <div id="user-panel" class="unit-33">
                 <div class="units-row end units-split">
                     <!-- Пользователь -->
@@ -61,7 +47,13 @@
                             </span>
                         </div>
                         <span id="empty-cart"
-                              ng-show="cart.items.length === 0">Ваша корзина пуста</span>
+                              ng-show="cart.items.length === 0">
+                            Ваша корзина пуста
+                        </span>
+                        <span id="cart-total-price"
+                                ng-show="cart.items.length > 0">
+                            {{ cart.totalPrice + " р."}}
+                        </span>
                     </div>
                 </div>
             </div>

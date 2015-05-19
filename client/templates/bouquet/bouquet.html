@@ -27,7 +27,7 @@
         <div class="units-row">
             <div class="unit-100">
                 <span class="bouquet-title">
-                    Наименование букета
+                    {{ bouquet.title.value }}
                 </span>
             </div>
         </div>
@@ -63,7 +63,7 @@
                                         цветок 1<br>
                                        <i class="grey">280 р.</i>
                                     </div>
-                                    <div class="unit-25 text-right">
+                                    <div class="unit-25 text-centered">
                                         <i>5 шт.</i>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                         цветок 1<br>
                                         <i class="grey">280 р.</i>
                                     </div>
-                                    <div class="unit-25 text-right">
+                                    <div class="unit-25 text-centered">
                                         <i>5 шт.</i>
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                         цветок 1<br>
                                         <i class="grey">280 р.</i>
                                     </div>
-                                    <div class="unit-25 text-right">
+                                    <div class="unit-25 text-centered">
                                         <i>5 шт.</i>
                                     </div>
                                 </div>
@@ -108,28 +108,19 @@
 
 
 
-
+                    <!-- Цена букета -->
                     <div class="unit-40">
                         <div class="units-row end">
                             <div class="unit-100 text-centered">
-                                <span class="bouquet-price">1850 р.</span>
+                                <span class="bouquet-price">{{ bouquet.price.value + ' р.' }}</span>
                             </div>
                         </div>
-
                         <div class="units-row">
-
                             <div class="unit-100 text-centered">
-                                <!--<button class="btn btn-big btn-yellow right">
-                                    В корзину
-                                </button>-->
-
-
                                 <span class="btn-single centered">
-                                    <button class="btn btn-big btn-yellow">В корзину</button>
+                                    <button class="btn btn-big btn-yellow" ng-click="cart.add(bouquet.id.value)">В корзину</button>
                                 </span>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -165,60 +156,46 @@
 
                 <div class="units-row">
 
-                        <div class="unit-50 related-bouquets">
-                            <div class="units-row end">
-                                <div class="unit-100">
-                                    <span class="title">Похожие букеты</span>
-                                </div>
-                            </div>
-
-                            <div class="units-row end">
-                                <div class="unit-100">
-                                    <ul class="blocks-2">
-                                        <li>
-                                            <img class="width-100" src="" alt=""/>
-                                        </li>
-                                        <li>
-                                            <img class="width-100" src="" alt=""/>
-                                        </li>
-                                        <li>
-                                            <img class="width-100" src="" alt=""/>
-                                        </li>
-                                        <li>
-                                            <img class="width-100" src="" alt=""/>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <!-- Похожие букеты -->
+                    <div class="unit-50 related-bouquets">
+                        <div class="units-row end">
+                            <div class="unit-100">
+                                <span class="title">Похожие букеты</span>
                             </div>
                         </div>
+                        <div class="units-row end">
+                            <div class="unit-100">
+                                <ul class="blocks-2">
+                                    <li ng-repeat="bouquet in relatedBouquets | limitTo: 4">
+                                        <a href="{{ '#/bouquet/' + bouquet.id.value }}">
+                                            <img class="width-100" src="" alt=""/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-
+                    <!-- Букеты по схожей цене -->
                     <div class="unit-50 related-bouquets same-price">
                         <div class="units-row end">
                             <div class="unit-100">
                                 <span class="title">За ту же сумму</span>
                             </div>
                         </div>
-
                         <div class="units-row end">
                             <div class="unit-100">
                                 <ul class="blocks-2">
-                                    <li>
-                                        <img class="width-100" src="" alt=""/>
-                                    </li>
-                                    <li>
-                                        <img class="width-100" src="" alt=""/>
-                                    </li>
-                                    <li>
-                                        <img class="width-100" src="" alt=""/>
-                                    </li>
-                                    <li>
-                                        <img class="width-100" src="" alt=""/>
+                                    <li ng-repeat="bouquet in samePrice | limitTo: 4">
+                                        <a href="{{ '#/bouquet/' + bouquet.id.value }}">
+                                            <img class="width-100" src="" alt=""/>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>

@@ -179,8 +179,9 @@ var bouquets = angular.module("lotos.bouquets", [])
     });
 
 
-bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", function ($log, $scope, $bouquets) {
+bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", "$cart", function ($log, $scope, $bouquets, $cart) {
     $scope.bouquets = $bouquets;
+    $scope.cart = $cart;
 
     //if ($scope.bouquets.items.length === 0) {
     //    $scope.bouquets.get();
@@ -188,15 +189,17 @@ bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", functi
 }]);
 
 
-bouquets.controller("BouquetController", ["$log", "$scope", "$routeParams", "$bouquets", function ($log, $scope, $routeParams, $bouquets) {
+bouquets.controller("BouquetController", ["$log", "$scope", "$routeParams", "$bouquets", "$cart", function ($log, $scope, $routeParams, $bouquets, $cart) {
     $scope.bouquets = $bouquets;
+    $scope.cart = $cart;
     $scope.bouquet = undefined;
     $scope.samePrice = [];
     $scope.sameFlowers = [];
 
     if ($routeParams.bouquetId !== undefined) {
+        $log.log($routeParams);
         angular.forEach($scope.bouquets.items, function (bouquet) {
-            if (bouquet.id.value === $routeParams.bouquetId)
+            if (bouquet.id.value === parseInt($routeParams.bouquetId))
                 $scope.bouquet = bouquet;
         });
     }
@@ -206,7 +209,7 @@ bouquets.controller("BouquetController", ["$log", "$scope", "$routeParams", "$bo
 
         /* Отбираем букеты по схожей цене */
         angular.forEach($scope.bouquets.items, function (bouquet) {
-            if ((bouquet.price.value - $scope.bouquet.price.value <= 500) && ($scope.bouquet.price.value - bouquet.price.value <= 500)) {
+            if (bouquet.price.value <= $scope.bouquet.price.value + 500 && bouquet.price.value >= $scope.bouquet.price.value - 500) {
                 $scope.samePrice.push(bouquet);
             }
         });

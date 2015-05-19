@@ -6,7 +6,7 @@
 
 angular.module("lotos.cart", [])
     .config(function ($provide) {
-        $provide.factory("$cart", ["$log", "$bouquets", function ($log) {
+        $provide.factory("$cart", ["$log", "$bouquets", function ($log, $bouquets) {
             var module = {};
 
             module.items = [];
