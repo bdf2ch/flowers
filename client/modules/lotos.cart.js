@@ -4,13 +4,14 @@
 
 "use strict";
 
-angular.module("lotos.cart", [])
+var cart = angular.module("lotos.cart", [])
     .config(function ($provide) {
         $provide.factory("$cart", ["$log", "$bouquets", function ($log, $bouquets) {
             var module = {};
 
             module.items = [];
             module.totalPrice = 0;
+
 
             /**
              *
@@ -26,6 +27,15 @@ angular.module("lotos.cart", [])
                         }
                     });
                 }
+            };
+
+
+            /**
+             * Удаляет все элементы из массива покупок
+             */
+            module.clear = function () {
+                module.items.splice(0, module.items.length);
+                module.totalPrice = 0;
             };
 
 
@@ -52,3 +62,12 @@ angular.module("lotos.cart", [])
     .run(function ($log) {
         $log.log("cart module");
     });
+
+
+
+cart.controller("CartController", ["$log", "$scope", "$cart", "$bouquets", function ($log, $scope, $cart, $bouquets) {
+    $scope.cart = $cart;
+    $scope.bouquets = $bouquets;
+
+    $log.log("cart controller");
+}]);

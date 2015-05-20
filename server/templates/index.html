@@ -32,6 +32,7 @@
             <!-- Пользователь и корзина -->
             <div id="user-panel" class="unit-33">
                 <div class="units-row end units-split">
+
                     <!-- Пользователь -->
                     <div id="user" class="unit-50">
                         <div class="units-row end">
@@ -39,22 +40,27 @@
                             <div class="unit-70"></div>
                         </div>
                     </div>
+
                     <!-- Корзина -->
                     <div id="cart" class="unit-50">
-                        <div id="cart-icon">
+                        <a href="#/cart">
+                            <div id="cart-icon">
                             <span class="badge badge-red right"
                                   ng-show="cart.items.length > 0">{{ cart.items.length }}
                             </span>
-                        </div>
+                            </div>
                         <span id="empty-cart"
                               ng-show="cart.items.length === 0">
                             Ваша корзина пуста
                         </span>
                         <span id="cart-total-price"
-                                ng-show="cart.items.length > 0">
+                              ng-show="cart.items.length > 0">
                             {{ cart.totalPrice + " р."}}
                         </span>
                     </div>
+                        </a>
+
+
                 </div>
             </div>
         </div>

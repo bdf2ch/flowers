@@ -10,6 +10,7 @@ html, body {
   margin: 0px;
   padding: 0px;
   background: url("../img/bg02.gif");
+  background-attachment: fixed;
 }
 
 #header {
@@ -73,6 +74,7 @@ html, body {
 
 #user-panel {
   //background: #FACA70;
+
 }
 
   #user {
@@ -106,22 +108,28 @@ html, body {
     width: 180px;
     //height: @header-height - 10px;
     height: 50px;
+    margin-right: -3px !important;
     //margin-right: 5px;
-    padding: 5px;
+    //padding: 5px;
+    padding-top: 0px;
     vertical-align: middle;
     z-index: 3;
-    background: #FACA70;
+    background: rgba(237, 155, 0, 0.5);
     //opacity: 0.5;
     //border: 1px solid red;
+
+    a {
+      text-decoration: none;
+    }
 
     #cart-icon {
       position: relative;
       display: inline-block;
       float: left;
-      width: 36px;
-      height: 36px;
-      margin-top: 2px;
-      margin-right: 5px;
+      width: 40px;
+      height: 50px;
+      //margin-top: 2px;
+      //margin-right: 5px;
       background: url("../img/cart2_36px.png") center center;
       background-repeat: no-repeat;
       //border: 1px solid black;
@@ -135,9 +143,9 @@ html, body {
     #empty-cart {
       position: relative;
       display: block;
-      height: 30px;
+      height: 50px;
       margin-left: 40px;
-      padding-top: 7px;
+      padding-top: 10px;
       padding-right: 5px;
       text-align: center;
       font-family: "Verdana";
@@ -149,14 +157,14 @@ html, body {
 
     #cart-total-price {
       display: block;
-      height: 30px;
+      height: 50px;
       margin-left: 40px;
       padding-top: 7px;
       padding-right: 5px;
       text-align: center;
       font-family: 'Lobster', cursive;
       font-size: 30px;
-      color: #de2c3b;
+      //color: #de2c3b;
 
       //border: 1px solid black;
     }
@@ -172,9 +180,10 @@ html, body {
   //bottom: 0px;
   //right: 0px;
   //margin-top: @header-height;
-  margin-top: @header-height;
+  //margin-top: @header-height;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 50px;
   //height: 100%;
   //margin-bottom: @footer-height;
   //margin-bottom: -50px;
@@ -200,17 +209,17 @@ html, body {
   //float: left;
   //width: @sidebar-width;
   height: 100%;
-  margin-top: 40px;
+  margin-top: 70px;
   margin-right: -20px;
   //padding-top: 50px;
   padding-bottom: 10px;
   padding-left: 10px;
-  padding-top: 10px;
+  //padding-top: 50px;
   //padding-right: 5px;
   background: url("../img/ornament1.png") top left #DEF6FF;
   background-repeat: repeat-y;
   //border: 1px solid red;
-  border-radius: 2px;
+  border-radius: 4px;
 
   select {
     //display: block;
@@ -264,7 +273,7 @@ html, body {
   //right: 0px;
   //float: left;
   z-index: 5;
-  height: 100%;
+  //height: 100%;
   min-height: 600px;
   //margin-left: @sidebar-width;
   //margin-top: @header-height - 25px;
@@ -275,7 +284,7 @@ html, body {
   //background: cornsilk;
   //
   background: #FCFCFC;
-  //background: url("../img/orn.png");
+  //background: url("../img/squares.png") #FEFFFA;
 
   .pagination {
     margin-bottom: 10px !important;
@@ -579,16 +588,180 @@ html, body {
     padding-top: 10px;
   }
 
-  .caption {
+  .service-caption {
     font-size: 20px;
     color: #0869A6;
   }
 }
 
+
+
+/*** CART ***/
+#template-cart {
+  padding-top: 40px;
+
+  .side-panel {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-repeat: repeat-y;
+
+    &.lightgreen {
+      background: url("../img/ornament2.png") bottom center #DDEDDD;
+    }
+
+    &.lightblue {
+      background: url("../img/ornament2.png") bottom center #DEF6FF;
+    }
+
+    &.purple {
+      background: url("../img/ornament2.png") bottom center #E7D5E8;
+    }
+
+    img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+      //margin-left: -20px;
+    }
+  }
+
+  #cart-items {
+
+    a {
+      display: block;
+      width: 200px;
+      text-decoration: none;
+    }
+
+    .cart-item {
+      margin-bottom: 20px !important;
+    }
+
+    .item-title {
+      position: relative;
+      display: block;
+      //z-index: 10;
+      //clear: both;
+      width: 200px;
+      height: 50px;
+      margin-top: -50px;
+      padding: 3px;
+      font-family: 'Lobster', cursive;
+      font-size: 18px;
+      line-height: 15px;
+      color: midnightblue;
+      background: rgba(237, 155, 0, 0.5);
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .amount {
+      margin-top: 20px;
+      margin-left: -5px;
+      margin-right: -5px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 40px;
+      //border: 1px solid lightgrey;
+    }
+
+    .item-price {
+      display: inline-block;
+      margin-top: 90px;
+      font-family: 'Lobster', cursive;
+      font-size: 30px;
+      color: #445588;
+    }
+
+    img {
+      position: relative;
+      display: block;
+      width: 200px;
+      height: 200px;
+      //z-index: 5;
+      border: 1px solid #FFC800;
+      border-bottom: 1px solid lightgrey;
+      border-radius: 4px;
+    }
+  }
+
+  #cart-no-items {
+    padding-top: 40px;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    color: lightgrey;
+
+    img {
+      margin-top: -5px;
+    }
+  }
+
+  #total-summ {
+    padding-top: 20px;
+    border-top: 1px dashed black;
+
+    .total {
+      font-family: 'Lobster', cursive;
+      font-size: 25px;
+    }
+
+    .total-summ-value {
+      font-family: 'Lobster', cursive;
+      font-size: 36px;
+      color: #b2232f;
+    }
+  }
+}
+
+
 /*** MISC ***/
 .clip {
   overflow: auto;
   text-overflow: ellipsis;
+}
+
+.caption {
+  display: block;
+  margin-bottom: 15px;
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+  color: #4EC0ED;
+
+  &.blue {
+    color: #2EA3D1;
+    border-bottom: 1px dashed #2EA3D1;
+  }
+
+  &.green {
+    color: #5AAB09;
+    border-bottom: 1px dashed #5AAB09;
+  }
+
+  &.purple {
+    color: #B880BA;
+    border-bottom: 1px dashed #B880BA;
+  }
+}
+
+.sidebar-leading {
+  display: block;
+  margin-top: 5px;
+  line-height: 14px;
+  font-family: 'Lobster', cursive;
+  font-size: 16px;
+  color: #194B9C;
+}
+
+.sidebar-text {
+  display: inline-block;
+  margin-top: 3px;
+  font-family: 'Lobster', cursive;
+  font-size: 16px;
+  line-height: 16px;
+  color: #616161;
 }
 //.badge {
 //  display: inline-block;
