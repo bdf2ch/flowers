@@ -22,7 +22,7 @@
             <div id="menu" class="unit-33">
                 <nav class="navbar navbar-pills">
                     <ul>
-                        <li><a href="#">О нас</a></li>
+                        <li><a href="#/">Каталог</a></li>
                         <li><a href="#">Доставка и оплата</a></li>
                         <li><a href="#">Контакты</a></li>
                     </ul>
@@ -46,7 +46,7 @@
                         <a href="#/cart">
                             <div id="cart-icon">
                             <span class="badge badge-red right"
-                                  ng-show="cart.items.length > 0">{{ cart.items.length }}
+                                  ng-show="cart.totalAmount > 0">{{ cart.totalAmount }}
                             </span>
                             </div>
                         <span id="empty-cart"

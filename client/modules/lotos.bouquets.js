@@ -106,7 +106,7 @@ var bouquets = angular.module("lotos.bouquets", [])
             /**
              * Инициализация наборов данных
              */
-            module.init = function () {
+            module.init = function (onsuccess) {
                 $http.post("server/controllers/init.php", {})
                     .success(function (data) {
                         if (data !== undefined) {
@@ -166,6 +166,10 @@ var bouquets = angular.module("lotos.bouquets", [])
                                     module.images.push(temp_image);
                                 });
                             }
+
+                            if (onsuccess !== undefined) {
+                                onsuccess();
+                            }
                         }
                     }
                 );
@@ -196,22 +200,47 @@ bouquets.controller("BouquetController", ["$log", "$scope", "$routeParams", "$bo
     $scope.samePrice = [];
     $scope.sameFlowers = [];
 
-    if ($routeParams.bouquetId !== undefined) {
-        $log.log($routeParams);
-        angular.forEach($scope.bouquets.items, function (bouquet) {
-            if (bouquet.id.value === parseInt($routeParams.bouquetId))
-                $scope.bouquet = bouquet;
-        });
-    }
-
-    if ($scope.bouquet !== undefined) {
-        $log.log($scope.bouquet);
-
-        /* Отбираем букеты по схожей цене */
-        angular.forEach($scope.bouquets.items, function (bouquet) {
-            if (bouquet.price.value <= $scope.bouquet.price.value + 500 && bouquet.price.value >= $scope.bouquet.price.value - 500) {
-                $scope.samePrice.push(bouquet);
+    if ($scope.bouquets.items.length === 0) {
+        $scope.bouquets.init(function () {
+            if ($routeParams.bouquetId !== undefined) {
+                $log.log($routeParams);
+                angular.forEach($scope.bouquets.items, function (bouquet) {
+                    if (bouquet.id.value === parseInt($routeParams.bouquetId))
+                        $scope.bouquet = bouquet;
+                });
             }
+
+            if ($scope.bouquet !== undefined) {
+                $log.log($scope.bouquet);
+
+                /* Отбираем букеты по схожей цене */
+                angular.forEach($scope.bouquets.items, function (bouquet) {
+                    if (bouquet.price.value <= $scope.bouquet.price.value + 500 && bouquet.price.value >= $scope.bouquet.price.value - 500) {
+                        $scope.samePrice.push(bouquet);
+                    }
+                });
+            }
+
         });
+    } else {
+        if ($routeParams.bouquetId !== undefined) {
+            $log.log($routeParams);
+            angular.forEach($scope.bouquets.items, function (bouquet) {
+                if (bouquet.id.value === parseInt($routeParams.bouquetId))
+                    $scope.bouquet = bouquet;
+            });
+        }
+
+        if ($scope.bouquet !== undefined) {
+            $log.log($scope.bouquet);
+
+            /* Отбираем букеты по схожей цене */
+            angular.forEach($scope.bouquets.items, function (bouquet) {
+                if (bouquet.price.value <= $scope.bouquet.price.value + 500 && bouquet.price.value >= $scope.bouquet.price.value - 500) {
+                    $scope.samePrice.push(bouquet);
+                }
+            });
+        }
     }
+
 }]);

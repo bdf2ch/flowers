@@ -10,6 +10,7 @@ var cart = angular.module("lotos.cart", [])
             var module = {};
 
             module.items = [];
+            module.totalAmount = 0;
             module.totalPrice = 0;
 
 
@@ -19,11 +20,38 @@ var cart = angular.module("lotos.cart", [])
              */
             module.add = function (bouquetId) {
                 if (bouquetId !== undefined) {
+                    var temp_bouquet = new Bouquet();
                     angular.forEach($bouquets.items, function (bouquet) {
                         if (bouquet.id.value === bouquetId) {
-                            module.items.push(bouquet);
-                            module.totalPrice += bouquet.price.value;
+                            temp_bouquet = bouquet;
+                            var counter = 0;
+
+                            angular.forEach(module.items, function (item) {
+                                if (item.id.value === bouquetId) {
+                                    counter++;
+                                    temp_bouquet = item;
+                                }
+                            });
+
+                            if (counter === 0) {
+                                temp_bouquet.amount = 1;
+                                module.items.push(temp_bouquet);
+                                module.totalPrice += bouquet.price.value;
+                                module.totalAmount++;
+                            } else {
+                                if (temp_bouquet.amount === undefined)
+                                    temp_bouquet.amount = 2;
+                                else
+                                    temp_bouquet.amount += 1;
+
+                                module.totalPrice += temp_bouquet.price.value;
+                                module.totalAmount++;
+                            }
+
+
+
                             $log.log("total price = ", module.totalPrice);
+                            $log.log(module.items);
                         }
                     });
                 }
@@ -31,7 +59,7 @@ var cart = angular.module("lotos.cart", [])
 
 
             /**
-             * Удаляет все элементы из массива покупок
+             * РЈРґР°Р»СЏРµС‚ РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РёР· РјР°СЃСЃРёРІР° РїРѕРєСѓРїРѕРє
              */
             module.clear = function () {
                 module.items.splice(0, module.items.length);
@@ -53,6 +81,39 @@ var cart = angular.module("lotos.cart", [])
                         }
                     });
                     return amount;
+                }
+            };
+
+            /**
+             * Увеличивает количество товара на единицу
+             * @param bouquetId
+             */
+            module.decreaseAmount = function (bouquetId) {
+                if (bouquetId !== undefined) {
+                    angular.forEach(module.items, function (bouquet, key) {
+                        if (bouquet.id.value === bouquetId) {
+                            if (bouquet.amount > 1)
+                                bouquet.amount--;
+                            else
+                                module.items.splice(key, 1);
+                            module.totalAmount--;
+                        }
+                    });
+                }
+            };
+
+            /**
+             * Уменьшает количество товара на единицу
+             * @param bouquetId
+             */
+            module.increaseAmount = function (bouquetId) {
+                if (bouquetId !== undefined) {
+                    angular.forEach(module.items, function (bouquet) {
+                        if (bouquet.id.value === bouquetId) {
+                            bouquet.amount++;
+                        }
+                    });
+                    module.totalAmount++;
                 }
             };
 

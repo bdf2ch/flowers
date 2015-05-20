@@ -121,11 +121,11 @@
             <div class="unit-100">
 
 
-                <div class="units-row end cart-item">
+                <div class="units-row end cart-item" ng-repeat="item in cart.items">
                     <div class="unit-40">
-                        <a href="">
-                            <img src="client/resources/img/test1.jpg" alt=""/>
-                            <span class="item-title">Наименование букета очень длинное из трез строк</span>
+                        <a href="{{ '#/bouquet/' + item.id.value }}">
+                            <img ng-src="{{ item.image_url.value }}" alt=""/>
+                            <span class="item-title">{{ item.title.value }}</span>
                         </a>
                     </div>
                     <div class="unit-30 text-right">
@@ -133,13 +133,13 @@
                             <div class="units-row end units-split">
                                 <div class="unit-100">
                                     <div class="units-row end units-split end">
-                                        <div class="unit-100 text-centered amount">10</div>
+                                        <div class="unit-100 text-centered amount">{{ item.amount }}</div>
                                     </div>
                                     <div class="units-row end units-split">
                                         <div class="unit-100 text-centered">
                                             <span class="btn-group">
-                                                <button class="btn btn-small btn-yellow" title="Уменьшить количество">-</button>
-                                                <button class="btn btn-small btn-yellow" title="Увеличить количество">+</button>
+                                                <button class="btn btn-small btn-yellow" title="Уменьшить количество" ng-click="cart.decreaseAmount(item.id.value)">-</button>
+                                                <button class="btn btn-small btn-yellow" title="Увеличить количество" ng-click="cart.increaseAmount(item.id.value)">+</button>
                                             </span>
                                         </div>
                                     </div>
@@ -148,61 +148,25 @@
                         </div>
                     </div>
                     <div class="unit-30 text-right">
-                        <span class="item-price">5800 р.</span>
+                        <span class="item-price">{{ item.price.value * item.amount + " р." }}</span>
                     </div>
                 </div>
-
-
-
-
-                <div class="units-row end cart-item">
-                    <div class="unit-40">
-                        <a href="">
-                            <img src="client/resources/img/test1.jpg" alt=""/>
-                            <span class="item-title">Наименование букета очень длинное из трез строк</span>
-                        </a>
-                    </div>
-                    <div class="unit-30 text-right">
-                        <div class="unit-90 amount text-right">
-                            <div class="units-row end units-split">
-                                <div class="unit-100">
-                                    <div class="units-row end units-split end">
-                                        <div class="unit-100 text-centered amount">10</div>
-                                    </div>
-                                    <div class="units-row end units-split">
-                                        <div class="unit-100 text-centered">
-                                            <span class="btn-group">
-                                                <button class="btn btn-small btn-yellow">-</button>
-                                                <button class="btn btn-small btn-yellow">+</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="unit-30 text-right">
-                        <span class="item-price">5800 р.</span>
-                    </div>
-                </div>
-
-
 
             </div>
         </div>
 
         <!-- Итоговая сумма -->
-        <div id="total-summ" class="units-row">
+        <div id="total-summ" class="units-row" ng-show="cart.items.length > 0">
             <div class="unit-30">
                 <span class="total">Итого:</span>
             </div>
             <div class="unit-70 text-right">
-                <span class="total-summ-value">10180 р.</span>
+                <span class="total-summ-value">{{ cart.totalPrice + " р." }}</span>
             </div>
         </div>
 
         <!-- Кнопки -->
-        <div class="units-row" ng-show="cart.items.length === 0">
+        <div class="units-row" ng-show="cart.items.length > 0">
             <div class="unit-50">
                 <button class="btn btn-red btn-big left"
                         ng-click="cart.clear()">Очистить корзину</button>
