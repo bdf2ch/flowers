@@ -130,16 +130,6 @@ var bouquets = angular.module("lotos.bouquets", [])
                                 });
                             }
 
-                            /* Инициализация массива букетов */
-                            if (data["bouquets"] !== undefined) {
-                                angular.forEach(data["bouquets"], function (bouquet) {
-                                    var temp_bouquet = new Bouquet();
-                                    temp_bouquet.fromJSON(bouquet);
-                                    module.items.push(temp_bouquet);
-                                });
-                                module.pages = Math.ceil(module.items.length / module.limit);
-                            }
-
                             /* Инициализация массива цветов, входящих в состав букета */
                             if (data["flowers"] !== undefined) {
                                 angular.forEach(data["flowers"], function (flower) {
@@ -165,6 +155,17 @@ var bouquets = angular.module("lotos.bouquets", [])
                                     temp_image.fromJSON(image);
                                     module.images.push(temp_image);
                                 });
+                            }
+
+
+                            /* Инициализация массива букетов */
+                            if (data["bouquets"] !== undefined) {
+                                angular.forEach(data["bouquets"], function (bouquet) {
+                                    var temp_bouquet = new Bouquet();
+                                    temp_bouquet.fromJSON(bouquet);
+                                    module.items.push(temp_bouquet);
+                                });
+                                module.pages = Math.ceil(module.items.length / module.limit);
                             }
 
                             if (onsuccess !== undefined) {
@@ -226,8 +227,20 @@ bouquets.controller("BouquetController", ["$log", "$scope", "$routeParams", "$bo
         if ($routeParams.bouquetId !== undefined) {
             $log.log($routeParams);
             angular.forEach($scope.bouquets.items, function (bouquet) {
-                if (bouquet.id.value === parseInt($routeParams.bouquetId))
+                if (bouquet.id.value === parseInt($routeParams.bouquetId)) {
                     $scope.bouquet = bouquet;
+                    if ($scope.bouquet.flowers.length > 0) {
+                        angular.forEach($scope.bouquet.flowersIds, function (flowerId) {
+                            var temp_flower = new Flower();
+                            angular.forEach($scope.bouquets.flowers, function (flower) {
+                                if (flower.id.value === flowerId) {
+                                    temp_flower = flower;
+                                    $scope.bouquet.flowers.push(temp_flower);
+                                }
+                            });
+                        });
+                    }
+                }
             });
         }
 

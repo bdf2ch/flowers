@@ -267,8 +267,13 @@
                         Квартира
                         <input type="text" name="reciever-address-flat" id="reciever-address-flat" class="width-100" placeholder="Квартира" ng-model="flat" />
                     </label>
+                    <div class="unit-100">
+                            <span class="subtitle-caption">
+                                Комментарий к заказу
+                            </span>
+                    </div>
                     <label for="order-comments">
-                        Комментарии к Вашему заказу
+                        Комментарий к Вашему заказу
                         <textarea id="order-comments" name="order-comments" rows="4" class="width-100" ng-model="comment"></textarea>
                     </label>
 
@@ -279,8 +284,8 @@
 
 
         <div class="units-row">
-            <div class="unit-100 text-centered">
-                <button class="btn btn-green btn-big" ng-click="validate()">Далее</button>
+            <div class="unit-100">
+                <button class="btn btn-green btn-big right width-30" ng-click="validate()">Далее</button>
             </div>
         </div>
 

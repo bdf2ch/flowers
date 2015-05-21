@@ -48,6 +48,22 @@
         die('Неверный запрос: ' . mysql_error());
     } else {
         while ($row = mysql_fetch_assoc($query_bouquets)) {
+            /* Заполнение массива букетов */
+            $bouquet_id = $row["id"];
+            $bouquet_flowers = array();
+            $query_bouquet_flowers = mysql_query("SELECT * FROM bouquet_flowers WHERE bouquet_id = $bouquet_id");
+            if (!$query_bouquet_flowers) {
+                    die('Неверный запрос: ' . mysql_error());
+            } else {
+                 while ($flower_row = mysql_fetch_assoc($query_bouquet_flowers)) {
+                    array_push($bouquet_flowers, $flower_row);
+                 }
+                 $row["flowers"] = $bouquet_flowers;
+            }
+
+
+
+
             array_push($bouquets, $row);
         }
     }

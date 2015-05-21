@@ -26,6 +26,7 @@ function Bouquet () {
     this.description_full = new Field({ source: "description_full", value: "" });
     this.price = new Field({ source: "price", value: 0 });
     this.image_url = new Field({ source: "image_url", value: "" });
+    this.flowersIds = [];
     this.flowers = [];
     this.additions = [];
     this.reasons = [];
@@ -42,13 +43,13 @@ function Bouquet () {
 
             /* Инициализация массива цветов, входящих в состав букета */
             if (JSONdata["flowers"] !== undefined) {
+                console.log("flowers = ", JSONdata["flowers"]);
                 var length = JSONdata["flowers"].length;
                 var i = 0;
 
                 for (i = 0; i < length; i++) {
-                    var temp_flower = new Flower();
-                    temp_flower.fromJSON(JSONdata["flowers"][i]);
-                    this.flowers.push(temp_flower);
+                    var flower_id = parseInt(JSONdata["flowers"][i]["flower_id"]);
+                    this.flowersIds.push(flower_id);
                 }
             }
 

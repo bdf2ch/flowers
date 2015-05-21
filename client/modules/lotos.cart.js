@@ -34,11 +34,13 @@ var cart = angular.module("lotos.cart", [])
                             });
 
                             if (counter === 0) {
+                                $log.log("no such bouquet");
                                 temp_bouquet.amount = 1;
                                 module.items.push(temp_bouquet);
                                 module.totalPrice += bouquet.price.value;
                                 module.totalAmount++;
                             } else {
+                                $log.log("bouquet exists");
                                 if (temp_bouquet.amount === undefined)
                                     temp_bouquet.amount = 2;
                                 else
