@@ -14,12 +14,12 @@
         <div class="units-row units-split">
 
             <!-- Логотип -->
-            <div id="logo" class="unit-33">
+            <div id="logo" class="unit-20">
                 <img src="client/resources/img/logo.png" alt="Флористический салон Белый Лотос"/>
             </div>
 
             <!-- Меню -->
-            <div id="menu" class="unit-33">
+            <div id="menu" class="unit-40">
                 <nav class="navbar navbar-pills">
                     <ul>
                         <li><a href="#/">Каталог</a></li>
@@ -30,14 +30,22 @@
             </div>
 
             <!-- Пользователь и корзина -->
-            <div id="user-panel" class="unit-33">
-                <div class="units-row end units-split">
+            <div id="user-panel" class="unit-40">
+                <div class="units-row units-split end">
 
                     <!-- Пользователь -->
                     <div id="user" class="unit-50">
-                        <div class="units-row end">
+                        <div class="units-row units-split end">
                             <div id="user-icon" class="unit-30"></div>
-                            <div class="unit-70"></div>
+                            <div id="user-info" class="unit-70 text-centered" ng-show="false">
+                                Здравствуйте, <a href="">Василисуалий</a><br>
+
+                            </div>
+
+                            <div id="user-info" class="unit-70 text-centered" ng-show="true">
+                                Мы рады Вас видеть!<br>
+                                <a href="">Зарегистрируйтесь</a>
+                            </div>
                         </div>
                     </div>
 

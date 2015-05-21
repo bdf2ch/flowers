@@ -18,6 +18,10 @@ var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar"
                 templateUrl: "client/templates/cart/cart.html",
                 controller: "CartController"
             })
+            .when("/order", {
+                templateUrl: "client/templates/order/order.html",
+                controller: "OrderController"
+            })
             .otherwise({ redirectTo: '/' });
 
         $provide.factory("$lotos", ["$http", function ($http) {

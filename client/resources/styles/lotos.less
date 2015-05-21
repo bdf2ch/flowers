@@ -78,26 +78,56 @@ html, body {
 }
 
   #user {
-    height: 50px;
+    width: 220px;
+    height: 40px;
+    margin-left: 100px;
+    margin-top: 5px;
     padding: 5px;
-
+    padding-top: 0px;
+    vertical-align: middle;
+    line-height: 15px;
+    //background: rgba(237, 155, 0, 1.0);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 
     #user-icon {
-      //position: relative;
-      //display: inline-block;
+      position: relative;
+      display: inline-block;
       //float: left;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
+      margin-left: -20px;
+      //margin-top: 5px;
       //vertical-align: middle;
-      margin-top: 2px;
+      //margin-top: 2px;
       //margin-right: 5px;
-      background: url("../img/user_36px.png") center center;
+      background: url("../img/man_40px.png") center center;
       background-repeat: no-repeat;
       //border: 1px solid black;
 
       .badge {
         margin-top: -3px;
         margin-right: -3px;
+      }
+    }
+
+    #user-info {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      line-height: 16px;
+      font-size: 14px;
+
+      a {
+        display: inline-block;
+        height: 17px;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px dotted white;
+
+        &:hover {
+          color: #990000;
+          border-bottom: 1px dotted #990000;
+        }
       }
     }
   }
@@ -109,14 +139,19 @@ html, body {
     //height: @header-height - 10px;
     height: 50px;
     margin-right: -3px !important;
+    //margin-top: 5px;
     //margin-right: 5px;
     //padding: 5px;
+    padding-left: 5px;
     padding-top: 0px;
     vertical-align: middle;
     z-index: 3;
     background: rgba(237, 155, 0, 0.5);
     //opacity: 0.5;
     //border: 1px solid red;
+    //border-top-left-radius: 25px;
+    //border-bottom-left-radius: 25px;
+    border-left: 1px solid #E8B266;
 
     a {
       text-decoration: none;
@@ -126,11 +161,12 @@ html, body {
       position: relative;
       display: inline-block;
       float: left;
-      width: 40px;
-      height: 50px;
-      //margin-top: 2px;
+      width: 46px;
+      height: 46px;
+      //margin-left: -20px;
+      margin-top: 2px;
       //margin-right: 5px;
-      background: url("../img/cart2_36px.png") center center;
+      background: url("../img/cart3_40px.png") center center;
       background-repeat: no-repeat;
       //border: 1px solid black;
 
@@ -145,11 +181,11 @@ html, body {
       display: block;
       height: 50px;
       margin-left: 40px;
-      padding-top: 10px;
+      padding-top: 12px;
       padding-right: 5px;
       text-align: center;
-      font-family: "Verdana";
-      font-size: 13px;
+      //font-family: "Verdana";
+      //font-size: 13px;
       line-height: 13px;
       color: black;
       //border: 1px solid red;
@@ -184,6 +220,7 @@ html, body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 50px;
+  min-height: 100%;
   //height: 100%;
   //margin-bottom: @footer-height;
   //margin-bottom: -50px;
@@ -284,7 +321,7 @@ html, body {
   //text-align: center;
   //background: cornsilk;
   //
-  background: #FCFCFC;
+  //background: #FCFCFC;
   //background: url("../img/squares.png") #FEFFFA;
 
   .pagination {
@@ -604,34 +641,7 @@ html, body {
 #template-cart {
   padding-top: 40px;
 
-  .side-panel {
-    margin-left: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    background-repeat: repeat-y;
-
-    &.lightgreen {
-      background: url("../img/ornament2.png") bottom center #DDEDDD;
-    }
-
-    &.lightblue {
-      background: url("../img/ornament2.png") bottom center #DEF6FF;
-    }
-
-    &.purple {
-      background: url("../img/ornament2.png") bottom center #E7D5E8;
-    }
-
-    img {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 20px;
-      //margin-left: -20px;
-    }
-  }
-
   #cart-items {
-
     a {
       display: block;
       width: 200px;
@@ -645,8 +655,6 @@ html, body {
     .item-title {
       position: relative;
       display: block;
-      //z-index: 10;
-      //clear: both;
       width: 200px;
       height: 50px;
       margin-top: -50px;
@@ -722,6 +730,30 @@ html, body {
 }
 
 
+
+
+/*** ORDER ***/
+#template-order {
+  padding-top: 40px;
+
+  select {
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+
+  #customer {
+    padding-right: 15px;
+    border-right: 1px dotted lightgrey;
+  }
+
+  #reciever {
+    padding-left: 15px;
+    padding-right: 20px;
+  }
+}
+
+
 /*** MISC ***/
 .clip {
   overflow: auto;
@@ -751,6 +783,32 @@ html, body {
   }
 }
 
+.side-panel {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-repeat: repeat-y;
+
+  &.lightgreen {
+    background: url("../img/ornament2.png") bottom center #DDEDDD;
+  }
+
+  &.lightblue {
+    background: url("../img/ornament2.png") bottom center #DEF6FF;
+  }
+
+  &.purple {
+    background: url("../img/ornament2.png") bottom center #E7D5E8;
+  }
+
+  img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+    //margin-left: -20px;
+  }
+}
+
 .sidebar-leading {
   display: block;
   margin-top: 5px;
@@ -768,23 +826,30 @@ html, body {
   line-height: 16px;
   color: #616161;
 }
-//.badge {
-//  display: inline-block;
-//  width: 18px;
-//  height: 18px;
-//  text-align: center;
-//  font-family: "Lucida Grande";
-  //font-size: 14px;
-//  font-weight: bold;
-//  line-height: 19px;
-//  border-radius: 18px;
 
-  //&.error {
-  //  color: white;
-  //  background: tomato;
- // }
-//}
+.title-image {
+  width: 80px;
+  height: 80px;
+  margin-top: -10px;
+}
 
+.title-caption {
+  display: block;
+  //padding-top: 10px;
+  margin-top: -10px;
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  line-height: 45px;
+  color: #616161;
+  border-bottom: 1px solid lightgrey;
+}
+
+.subtitle-caption {
+  font-family: 'Lobster', cursive;
+  font-size: 22px;
+  line-height: 45px;
+  color: #b2232f;
+}
 
 /*** ALIGNS ***/
 .left {

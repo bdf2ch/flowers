@@ -53,19 +53,46 @@ body {
   background: #51a7c9;
 }
 #header #user {
-  height: 50px;
+  width: 220px;
+  height: 40px;
+  margin-left: 100px;
+  margin-top: 5px;
   padding: 5px;
+  padding-top: 0px;
+  vertical-align: middle;
+  line-height: 15px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 #header #user #user-icon {
-  width: 36px;
-  height: 36px;
-  margin-top: 2px;
-  background: url("../img/user_36px.png") center center;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  background: url("../img/man_40px.png") center center;
   background-repeat: no-repeat;
 }
 #header #user #user-icon .badge {
   margin-top: -3px;
   margin-right: -3px;
+}
+#header #user #user-info {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  line-height: 16px;
+  font-size: 14px;
+}
+#header #user #user-info a {
+  display: inline-block;
+  height: 17px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px dotted white;
+}
+#header #user #user-info a:hover {
+  color: #990000;
+  border-bottom: 1px dotted #990000;
 }
 #header #cart {
   position: relative;
@@ -73,10 +100,12 @@ body {
   width: 180px;
   height: 50px;
   margin-right: -3px !important;
+  padding-left: 5px;
   padding-top: 0px;
   vertical-align: middle;
   z-index: 3;
   background: rgba(237, 155, 0, 0.5);
+  border-left: 1px solid #E8B266;
 }
 #header #cart a {
   text-decoration: none;
@@ -85,9 +114,10 @@ body {
   position: relative;
   display: inline-block;
   float: left;
-  width: 40px;
-  height: 50px;
-  background: url("../img/cart2_36px.png") center center;
+  width: 46px;
+  height: 46px;
+  margin-top: 2px;
+  background: url("../img/cart3_40px.png") center center;
   background-repeat: no-repeat;
 }
 #header #cart #cart-icon .badge {
@@ -99,11 +129,9 @@ body {
   display: block;
   height: 50px;
   margin-left: 40px;
-  padding-top: 10px;
+  padding-top: 12px;
   padding-right: 5px;
   text-align: center;
-  font-family: "Verdana";
-  font-size: 13px;
   line-height: 13px;
   color: black;
 }
@@ -121,6 +149,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 50px;
+  min-height: 100%;
   width: 1250px;
   border-left: 1px solid lightgrey;
   background: white;
@@ -169,7 +198,6 @@ body {
   margin-bottom: -50px;
   padding-top: 0px;
   padding: 10px;
-  background: #FCFCFC;
 }
 #content .pagination {
   margin-bottom: 10px !important;
@@ -386,26 +414,6 @@ body {
 #template-cart {
   padding-top: 40px;
 }
-#template-cart .side-panel {
-  margin-left: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  background-repeat: repeat-y;
-}
-#template-cart .side-panel.lightgreen {
-  background: url("../img/ornament2.png") bottom center #ddeddd;
-}
-#template-cart .side-panel.lightblue {
-  background: url("../img/ornament2.png") bottom center #def6ff;
-}
-#template-cart .side-panel.purple {
-  background: url("../img/ornament2.png") bottom center #e7d5e8;
-}
-#template-cart .side-panel img {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 20px;
-}
 #template-cart #cart-items a {
   display: block;
   width: 200px;
@@ -478,6 +486,23 @@ body {
   font-size: 36px;
   color: #b2232f;
 }
+/*** ORDER ***/
+#template-order {
+  padding-top: 40px;
+}
+#template-order select {
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+#template-order #customer {
+  padding-right: 15px;
+  border-right: 1px dotted lightgrey;
+}
+#template-order #reciever {
+  padding-left: 15px;
+  padding-right: 20px;
+}
 /*** MISC ***/
 .clip {
   overflow: auto;
@@ -502,6 +527,26 @@ body {
   color: #B880BA;
   border-bottom: 1px dashed #B880BA;
 }
+.side-panel {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-repeat: repeat-y;
+}
+.side-panel.lightgreen {
+  background: url("../img/ornament2.png") bottom center #ddeddd;
+}
+.side-panel.lightblue {
+  background: url("../img/ornament2.png") bottom center #def6ff;
+}
+.side-panel.purple {
+  background: url("../img/ornament2.png") bottom center #e7d5e8;
+}
+.side-panel img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+}
 .sidebar-leading {
   display: block;
   margin-top: 5px;
@@ -517,6 +562,26 @@ body {
   font-size: 16px;
   line-height: 16px;
   color: #616161;
+}
+.title-image {
+  width: 80px;
+  height: 80px;
+  margin-top: -10px;
+}
+.title-caption {
+  display: block;
+  margin-top: -10px;
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  line-height: 45px;
+  color: #616161;
+  border-bottom: 1px solid lightgrey;
+}
+.subtitle-caption {
+  font-family: 'Lobster', cursive;
+  font-size: 22px;
+  line-height: 45px;
+  color: #b2232f;
 }
 /*** ALIGNS ***/
 .left {

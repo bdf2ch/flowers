@@ -101,16 +101,25 @@
 
     <div class="unit-75">
 
+        <div class="units-row end units-split">
+            <div class="unit-90 text-left">
+                <span class="title-caption">Корзина</span>
+            </div>
+            <div class="unit-10">
+                <img class="title-image" src="client/resources/img/package.png" alt=""/>
+            </div>
+        </div>
+
         <!-- Заглушка на случай отсутствия товаров в корзине -->
         <div id="cart-no-items" class="units-row" ng-show="cart.items.length === 0">
             <div class="unit-100 text-centered">
                 <div class="unit-30">
-                    <img class="right" src="client/resources/img/cart.png" alt=""/>
+                    <img class="right" src="client/resources/img/package.png" alt=""/>
                 </div>
                 <div class="unit-50 text-left">
                     На данный момент в Вашей корзине ничего нет.<br>
-                    Вы можете выбрать понравившийся Вам букет в <a href="#/">Каталоге букетов</a>,
-                    или позвонить нам по номеру (8152) 208-205 и наши консультанты помогут Вам сделать подходящий выбор.
+                    Вы можете выбрать понравившийся Вам букет в <a href="#/">Каталоге букетов</a>
+                    или позвонить нам по номеру <span class="black">(8152) 208-205</span> и наши консультанты помогут Вам сделать подходящий выбор.
                 </div>
                 <div class="unit-20">&nbsp;</div>
             </div>
