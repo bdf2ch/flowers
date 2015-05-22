@@ -4,7 +4,7 @@
 
 "use strict";
 
-var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar", "lotos.cart", "lotos.bouquets"])
+var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar", "lotos.cart", "lotos.bouquets", "lotos.orders", "lotos.misc", "lotos.session"])
     .config(function ($provide, $routeProvider) {
         $routeProvider
             .when("/", {

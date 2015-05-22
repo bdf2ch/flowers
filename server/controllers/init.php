@@ -19,6 +19,8 @@
     $images = array();
     $flowers = array();
     $additions = array();
+    $payment_methods = array();
+    $cities = array();
 
     /* Заполнение массива поводов */
     $query_reasons = mysql_query("SELECT * FROM reasons");
@@ -48,7 +50,8 @@
         die('Неверный запрос: ' . mysql_error());
     } else {
         while ($row = mysql_fetch_assoc($query_bouquets)) {
-            /* Заполнение массива букетов */
+
+            /* Заполнение массива цветов, входящих в состав букета */
             $bouquet_id = $row["id"];
             $bouquet_flowers = array();
             $query_bouquet_flowers = mysql_query("SELECT * FROM bouquet_flowers WHERE bouquet_id = $bouquet_id");
@@ -60,9 +63,6 @@
                  }
                  $row["flowers"] = $bouquet_flowers;
             }
-
-
-
 
             array_push($bouquets, $row);
         }
@@ -102,9 +102,37 @@
     }
     $result["additions"] = $additions;
 
+    /* Заполнение массива способ оплаты */
+    $query_payment_methods = mysql_query("SELECT * FROM payment_methods");
+    if (!$query_payment_methods) {
+        die('Неверный запрос: ' . mysql_error());
+    } else {
+        while ($row = mysql_fetch_assoc($query_payment_methods)) {
+            array_push($payment_methods, $row);
+        }
+    }
+    $result["payment_methods"] = $payment_methods;
+
+    /* Заполнение массива городов доставки */
+    $query_cities = mysql_query("SELECT * FROM cities");
+    if (!$query_cities) {
+        die('Неверный запрос: ' . mysql_error());
+    } else {
+        while ($row = mysql_fetch_assoc($query_cities)) {
+            array_push($cities, $row);
+        }
+    }
+    $result["cities"] = $cities;
+
     echo(json_encode($result));
 
     mysql_free_result($query_reasons);
     mysql_free_result($query_addressees);
+    mysql_free_result($query_flowers);
+    mysql_free_result($query_additions);
+    mysql_free_result($query_bouquets);
+    mysql_free_result($query_cities);
+    mysql_free_result($query_payment_methods);
+    mysql_free_result($query_images);
     mysql_close($connection);
 ?>

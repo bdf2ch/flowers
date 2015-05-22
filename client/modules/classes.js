@@ -170,11 +170,56 @@ function Address () {
 
 
 function Order () {
-    this.id = 0;
-    this.userId = 0;
-    this.date = 0;
-    this.items = [];
-    this.totalPrice = 0;
+    this.id = new Field({ source: "id", value: 0 });
+    this.paymentMethodId = new Field({ source: "payment_method_id", value: 0 });
+    this.userId = new Field({ source: "user_id", value: 0 });
+    this.customerGenderId = new Field({ source: "customer_gender_id", value: 1 });
+    this.customerName = new Field({ source: "customer_name", value: "" });
+    this.customerFname = new Field({ source: "customer_fname", value: "" });
+    this.customerSurname = new Field({ source: "customer_surname", value: "" });
+    this.customerPhone = new Field({ source: "customer_phone", value: "" });
+    this.customerEmail = new Field({ source: "customer_email", value: "" });
+    this.recieverGenderId = new Field({ source: "reciever_gender_id", value: 1 });
+    this.recieverName = new Field({ source: "reciever_name", value: "" });
+    this.recieverFname = new Field({ source: "reciever_name", value: "" });
+    this.recieverSurname = new Field({ source: "recieverSurname", value: "" });
+    this.recieverPhone = new Field({ source: "reciever_phone", value: "" });
+    this.cityId = new Field({ source: "address_city_id", value: 1 });
+    this.street = new Field({ source: "address_street", value: "" });
+    this.building = new Field({ source: "address_building", value: "" });
+    this.buildingIndex = new Field({ source: "address_building_index", value: "" });
+    this.flat = new Field({ source: "address_flat", value: "" });
+    this.comment = new Field({ source: "comment", value: "" });
+    this.customerIsReciever = new Field({ source: "customer_is_reciever", value: true });
+    this.created = new Field({ source: "created", value: 0 });
+    this.bouquets = [];
+
+    this.fromJSON = function (JSONdata) {
+        if (JSONdata !== undefined) {
+            this.id.value = parseInt(JSONdata[this.id.source]);
+            this.paymentMethodId.value = parseInt(JSONdata[this.paymentMethodId.source]);
+            this.userId.value = parseInt(JSONdata[this.userId.source]);
+            this.customerGenderId.value = parseInt(JSONdata[this.customerGenderId.source]);
+            this.customerName.value = JSONdata[this.customerName.source];
+            this.customerFname.value = JSONdata[this.customerFname.source];
+            this.customerSurname.value = JSONdata[this.customerSurname.source];
+            this.customerPhone.value = JSONdata[this.customerPhone.source];
+            this.customerEmail.value = JSONdata[this.customerEmail.source];
+            this.recieverGenderId.value = parseInt(JSONdata[this.recieverGenderId.source]);
+            this.recieverName.value = JSONdata[this.recieverName.source];
+            this.recieverFname.value = JSONdata[this.recieverFname.source];
+            this.recieverSurname.value = JSONdata[this.recieverSurname.source];
+            this.recieverPhone.value = JSONdata[this.recieverPhone.source];
+            this.cityId.value = parseInt(JSONdata[this.cityId.source]);
+            this.street.value = JSONdata[this.street.source];
+            this.building.value = JSONdata[this.building.source];
+            this.buildingIndex.value = JSONdata[this.buildingIndex.source];
+            this.flat.value = JSONdata[this.flat.source];
+            this.comment.value = JSONdata[this.comment.source];
+            this.customerIsReciever.value = parseInt(JSONdata[this.customerIsReciever.source]) === 1 ? true : false;
+            this.created.value = JSONdata[this.created.source];
+        }
+    };
 };
 
 
@@ -246,6 +291,40 @@ function BouquetImage () {
             this.id.value = parseInt(JSONdata[this.id.source]);
             this.bouquetId.value = parseInt(JSONdata[this.bouquetId.source]);
             this.url = JSONdata[this.url.source];
+        }
+    };
+};
+
+
+/**
+ * Способ оплаты
+ * @constructor
+ */
+function PaymentMethod () {
+    this.id = new Field({ source: "id", value: 0 });
+    this.title = new Field({ source: "title", value: "" });
+
+    this.fromJSON = function (JSONdata) {
+        if (JSONdata !== undefined) {
+            this.id.value = parseInt(JSONdata[this.id.source]);
+            this.title.value = JSONdata[this.title.source];
+        }
+    };
+};
+
+
+/**
+ * Город
+ * @constructor
+ */
+function City () {
+    this.id = new Field({ source: "id", value: 0 });
+    this.title = new Field ({ source: "id", value: 0 });
+
+    this.fromJSON = function (JSONdata) {
+        if (JSONdata !== undefined) {
+            this.id.value = parseInt(JSONdata[this.id.source]);
+            this.title.value = JSONdata[this.title.source];
         }
     };
 };
