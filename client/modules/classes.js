@@ -171,8 +171,8 @@ function Address () {
 
 function Order () {
     this.id = new Field({ source: "id", value: 0 });
-    this.paymentMethodId = new Field({ source: "payment_method_id", value: 0 });
-    this.deliveryMethodId = new Field({ source: "delivery_method_id", value: 0 });
+    this.paymentMethodId = new Field({ source: "payment_method_id", value: 1 });
+    this.deliveryMethodId = new Field({ source: "delivery_method_id", value: 1 });
     this.userId = new Field({ source: "user_id", value: 0 });
     this.customerGenderId = new Field({ source: "customer_gender_id", value: 1 });
     this.customerName = new Field({ source: "customer_name", value: "" });
@@ -325,7 +325,7 @@ function PaymentMethod () {
  */
 function DeliveryMethod () {
     this.id = new Field({ source: "id", value: 0 });
-    this.title = new Field ({ source: "id", value: "" });
+    this.title = new Field ({ source: "title", value: "" });
     this.price = new Field({ source: "price", value: 0 });
 
     this.fromJSON = function (JSONdata) {
@@ -344,7 +344,7 @@ function DeliveryMethod () {
  */
 function City () {
     this.id = new Field({ source: "id", value: 0 });
-    this.title = new Field ({ source: "id", value: 0 });
+    this.title = new Field ({ source: "title", value: "" });
 
     this.fromJSON = function (JSONdata) {
         if (JSONdata !== undefined) {

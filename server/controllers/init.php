@@ -126,6 +126,7 @@
     }
     $result["delivery_methods"] = $delivery_methods;
 
+
     /* Заполнение массива городов доставки */
     $query_cities = mysql_query("SELECT * FROM cities");
     if (!$query_cities) {
@@ -137,6 +138,7 @@
     }
     $result["cities"] = $cities;
 
+
     echo(json_encode($result));
 
     mysql_free_result($query_reasons);
@@ -144,8 +146,9 @@
     mysql_free_result($query_flowers);
     mysql_free_result($query_additions);
     mysql_free_result($query_bouquets);
-    mysql_free_result($query_cities);
-    mysql_free_result($query_payment_methods);
+    //mysql_free_result($query_cities);
+    //mysql_free_result($query_payment_methods);
+    //mysql_free_result($query_delivery_methods);
     mysql_free_result($query_images);
     mysql_close($connection);
 ?>

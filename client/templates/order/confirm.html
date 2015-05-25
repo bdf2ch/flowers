@@ -118,20 +118,20 @@
                 </div>
             </div>
 
-            <div class="units-row end confirmation-cart-items">
+            <div class="units-row end confirmation-cart-items" ng-repeat="bouquet in cart.items">
                 <div class="unit-10">
-                    <a href="">
-                        <img src="client/resources/img/test1.jpg" alt=""/>
+                    <a href="{{ '#/' + bouquet.id.value }}">
+                        <img src="{{ bouquet.image_url.value }}" alt=""/>
                     </a>
                 </div>
                 <div class="unit-70 text-left">
-                    Наименование букета
+                    {{ bouquet.title.value }}
                 </div>
                 <div class="unit-10 text-right">
-                    2 шт.
+                    {{ bouquet.amount + " шт." }}
                 </div>
                 <div class="unit-10 text-right">
-                    3550 р.
+                    {{ bouquet.price.value + " .р" }}
                 </div>
             </div>
             <div class="units-row end confirmation-cart-items">

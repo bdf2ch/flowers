@@ -185,6 +185,16 @@ var bouquets = angular.module("lotos.bouquets", [])
                                 });
                             }
 
+                            /* Инициализация массива городов */
+                            if (data["cities"] !== undefined) {
+                                angular.forEach(data["cities"], function (city) {
+                                    var temp_city = new City();
+                                    temp_city.fromJSON(city);
+                                    $misc.cities.push(temp_city);
+                                });
+                            }
+
+
                             if (onsuccess !== undefined) {
                                 onsuccess();
                             }

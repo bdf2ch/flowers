@@ -66,6 +66,7 @@ var cart = angular.module("lotos.cart", [])
             module.clear = function () {
                 module.items.splice(0, module.items.length);
                 module.totalPrice = 0;
+                module.totalAmount = 0;
             };
 
 
@@ -94,10 +95,13 @@ var cart = angular.module("lotos.cart", [])
                 if (bouquetId !== undefined) {
                     angular.forEach(module.items, function (bouquet, key) {
                         if (bouquet.id.value === bouquetId) {
-                            if (bouquet.amount > 1)
+                            if (bouquet.amount > 1) {
                                 bouquet.amount--;
-                            else
+                                module.totalPrice -= bouquet.price.value;
+                            } else {
                                 module.items.splice(key, 1);
+                                module.totalPrice -= bouquet.price.value;
+                            }
                             module.totalAmount--;
                         }
                     });
@@ -113,6 +117,7 @@ var cart = angular.module("lotos.cart", [])
                     angular.forEach(module.items, function (bouquet) {
                         if (bouquet.id.value === bouquetId) {
                             bouquet.amount++;
+                            module.totalPrice += bouquet.price.value;
                         }
                     });
                     module.totalAmount++;
