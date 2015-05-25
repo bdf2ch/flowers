@@ -172,6 +172,7 @@ function Address () {
 function Order () {
     this.id = new Field({ source: "id", value: 0 });
     this.paymentMethodId = new Field({ source: "payment_method_id", value: 0 });
+    this.deliveryMethodId = new Field({ source: "delivery_method_id", value: 0 });
     this.userId = new Field({ source: "user_id", value: 0 });
     this.customerGenderId = new Field({ source: "customer_gender_id", value: 1 });
     this.customerName = new Field({ source: "customer_name", value: "" });
@@ -192,12 +193,15 @@ function Order () {
     this.comment = new Field({ source: "comment", value: "" });
     this.customerIsReciever = new Field({ source: "customer_is_reciever", value: true });
     this.created = new Field({ source: "created", value: 0 });
+    this.deliveryStart = new Field({ source: "delivery_start_period", value: 0 });
+    this.deliveryEnd = new Field({ source: "delivery_end_periof", value: 0 });
     this.bouquets = [];
 
     this.fromJSON = function (JSONdata) {
         if (JSONdata !== undefined) {
             this.id.value = parseInt(JSONdata[this.id.source]);
             this.paymentMethodId.value = parseInt(JSONdata[this.paymentMethodId.source]);
+            this.deliveryMethodId.value = parseInt(JSONdata[this.deliveryMethodId.source]);
             this.userId.value = parseInt(JSONdata[this.userId.source]);
             this.customerGenderId.value = parseInt(JSONdata[this.customerGenderId.source]);
             this.customerName.value = JSONdata[this.customerName.source];
@@ -217,6 +221,8 @@ function Order () {
             this.flat.value = JSONdata[this.flat.source];
             this.comment.value = JSONdata[this.comment.source];
             this.customerIsReciever.value = parseInt(JSONdata[this.customerIsReciever.source]) === 1 ? true : false;
+            this.deliveryStart = parseInt(JSONdata[this.deliveryStart.source]);
+            this.deliveryEnd = parseInt(JSONdata[this.deliveryEnd.source]);
             this.created.value = JSONdata[this.created.source];
         }
     };
@@ -308,6 +314,25 @@ function PaymentMethod () {
         if (JSONdata !== undefined) {
             this.id.value = parseInt(JSONdata[this.id.source]);
             this.title.value = JSONdata[this.title.source];
+        }
+    };
+};
+
+
+/**
+ * Способ доставки
+ * @constructor
+ */
+function DeliveryMethod () {
+    this.id = new Field({ source: "id", value: 0 });
+    this.title = new Field ({ source: "id", value: "" });
+    this.price = new Field({ source: "price", value: 0 });
+
+    this.fromJSON = function (JSONdata) {
+        if (JSONdata !== undefined) {
+            this.id.value = parseInt(JSONdata[this.id.source]);
+            this.title.value = JSONdata[this.title.source];
+            this.price.value = parseFloat(JSONdata[this.price.source]);
         }
     };
 };

@@ -7,6 +7,7 @@ var misc = angular.module("lotos.misc", [])
             var module = {};
 
             module.paymentMethods = [];
+            module.deliveryMethods = [];
             module.cities = [];
             module.genders = [
                 {
@@ -18,6 +19,16 @@ var misc = angular.module("lotos.misc", [])
                     title: "Уважаемая"
                 }
             ];
+
+            module.getCityById = function (cityId) {
+                if (cityId !== undefined) {
+                    angular.forEach(module.cities, function (city, key) {
+                        if (city.id.value === cityId) {
+                            return city;
+                        }
+                    });
+                }
+            };
 
             return module;
         }]);

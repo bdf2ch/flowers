@@ -1,6 +1,6 @@
 var bouquets = angular.module("lotos.bouquets", [])
     .config(function ($provide) {
-        $provide.factory("$bouquets", ["$log", "$http", function ($log, $http) {
+        $provide.factory("$bouquets", ["$log", "$http", "$misc", function ($log, $http, $misc) {
             var module = {};
 
             /* Наборы данных */
@@ -157,7 +157,6 @@ var bouquets = angular.module("lotos.bouquets", [])
                                 });
                             }
 
-
                             /* Инициализация массива букетов */
                             if (data["bouquets"] !== undefined) {
                                 angular.forEach(data["bouquets"], function (bouquet) {
@@ -166,6 +165,24 @@ var bouquets = angular.module("lotos.bouquets", [])
                                     module.items.push(temp_bouquet);
                                 });
                                 module.pages = Math.ceil(module.items.length / module.limit);
+                            }
+
+                            /* Инициализация массива способов оплаты */
+                            if (data["payment_methods"] !== undefined) {
+                                angular.forEach(data["payment_methods"], function (payment_method) {
+                                    var temp_payment_method = new PaymentMethod();
+                                    temp_payment_method.fromJSON(payment_method);
+                                    $misc.paymentMethods.push(temp_payment_method);
+                                });
+                            }
+
+                            /* Инициализация массива способов доставки */
+                            if (data["delivery_methods"] !== undefined) {
+                                angular.forEach(data["delivery_methods"], function (delivery_method) {
+                                    var temp_delivery_method = new DeliveryMethod();
+                                    temp_delivery_method.fromJSON(delivery_method);
+                                    $misc.deliveryMethods.push(temp_delivery_method);
+                                });
                             }
 
                             if (onsuccess !== undefined) {

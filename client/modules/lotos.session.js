@@ -38,3 +38,37 @@ var session = angular.module("lotos.session", ["ngCookies"])
         }
     }
 );
+
+
+session.controller("AccountController", ["$log", "$scope", "$session", function ($log, $scope, $account) {
+    $scope.account = $account;
+    $scope.tabs = [
+        {
+            id: 1,
+            title: "О Вас",
+            template: "client/templates/account/account_about.html",
+            selected: true
+        },
+        {
+            id: 2,
+            title: "Ваши заказы",
+            template: "client/templates/account/account_orders.html",
+            selected: false
+        }
+    ];
+    $scope.activeTab = $scope.tabs[0];
+
+    /* Выбор вкладки */
+    $scope.selectTab = function (tabId) {
+        if (tabId !== undefined) {
+            angular.forEach($scope.tabs, function (tab) {
+                if (tab.id === tabId) {
+                    tab.selected = true;
+                    $scope.activeTab = tab;
+                } else {
+                    tab.selected = false;
+                }
+            });
+        }
+    };
+}]);

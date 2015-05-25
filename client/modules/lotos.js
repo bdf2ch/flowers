@@ -22,6 +22,14 @@ var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar"
                 templateUrl: "client/templates/order/order.html",
                 controller: "OrderController"
             })
+            .when("/confirm", {
+                templateUrl: "client/templates/order/confirm.html",
+                controller: "ConfirmationController"
+            })
+            .when("/account", {
+                templateUrl: "client/templates/account/account.html",
+                controller: "AccountController"
+            })
             .otherwise({ redirectTo: '/' });
 
         $provide.factory("$lotos", ["$http", function ($http) {

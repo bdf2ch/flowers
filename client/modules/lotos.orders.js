@@ -7,6 +7,7 @@ var orders = angular.module("lotos.orders", [])
             var module = {};
 
             module.items = [];
+            module.order = new Order();
 
 
             module.add = function (order) {
@@ -55,10 +56,11 @@ var orders = angular.module("lotos.orders", [])
 
 
 
-orders.controller("OrderController", ["$log", "$scope", "$cart", "$bouquets", "$misc", function ($log, $scope, $cart, $bouquets, $misc) {
+orders.controller("OrderController", ["$log", "$scope", "$cart", "$bouquets", "$misc", "$orders", "$location", function ($log, $scope, $cart, $bouquets, $misc, $orders, $location) {
     $scope.cart = $cart;
     $scope.bouquets = $bouquets;
     $scope.misc = $misc;
+    $scope.orders = $orders;
 
     $scope.cities = [{id: 1, title: "Мурманск"}, {id: 2, title: "Североморск"}];
     $scope.payment_methods = [{id: 1, title: "Наличными, курьеру"}, {id: 2, title: "Банковской картой, курьеру"}];
@@ -107,8 +109,12 @@ orders.controller("OrderController", ["$log", "$scope", "$cart", "$bouquets", "$
     $scope.comment = "";
     $scope.customerIsReciever = true;
 
-    $scope.order = new Order();
+    $scope.order = $scope.orders.order;
 
+    /* Переход на главную страницу */
+    $scope.gotoMain = function () {
+        $location.url("/");
+    };
 
     /*** Валидация формы заказа ***/
     $scope.validate = function () {
@@ -202,9 +208,41 @@ orders.controller("OrderController", ["$log", "$scope", "$cart", "$bouquets", "$
             $scope.errors.address.flat = false;
 
         if ($scope.errorCounter === 0) {
-
+            $location.url("/confirm");
         }
     };
 
     $log.log("order controller");
+}]);
+
+
+orders.controller("ConfirmationController", ["$log", "$scope", "$orders", "$cart", "$misc", "$location", function ($log, $scope, $orders, $cart, $misc, $location) {
+    $scope.cart = $cart;
+    $scope.orders = $orders;
+    $scope.misc = $misc;
+
+
+    $scope.orders.order.customerName.value = "Евлампий";
+    $scope.orders.order.customerFname.value = "Алибардович";
+    $scope.orders.order.customerSurname.value = "Косоглазовский";
+    $scope.orders.order.customerPhone.value = "+7 (921) 555-66-789";
+    $scope.orders.order.customerEmail.value = "fuckingemail@email.com";
+    $scope.orders.order.comment.value = "Комментарий к заказу комментарий к заказу комментарий к заказу комментарий к заказу комментарий к заказу";
+    $scope.orders.order.recieverSurname.value = "Константинопольский";
+    $scope.orders.order.recieverName.value = "Константин";
+    $scope.orders.order.recieverFname.value = "Константинович";
+    $scope.orders.order.recieverPhone.value = "+7 (921) 666-55-423";
+    $scope.orders.order.street.value = "Героев Рыбачьего";
+    $scope.orders.order.building.value = "202";
+    $scope.orders.order.buildingIndex = "2";
+    $scope.orders.order.flat = "112";
+
+    $scope.orderIsConfirmed = false;
+    $scope.accountIsCreated = false;
+
+    /* Переход к странице оформления заказа */
+    $scope.gotoOrder = function () {
+        $location.url("/order");
+    };
+
 }]);

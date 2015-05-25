@@ -20,6 +20,7 @@
     $flowers = array();
     $additions = array();
     $payment_methods = array();
+    $delivery_methods = array();
     $cities = array();
 
     /* Заполнение массива поводов */
@@ -102,7 +103,7 @@
     }
     $result["additions"] = $additions;
 
-    /* Заполнение массива способ оплаты */
+    /* Заполнение массива способов оплаты */
     $query_payment_methods = mysql_query("SELECT * FROM payment_methods");
     if (!$query_payment_methods) {
         die('Неверный запрос: ' . mysql_error());
@@ -112,6 +113,18 @@
         }
     }
     $result["payment_methods"] = $payment_methods;
+
+
+    /* Заполнение массива способов доставки */
+    $query_delivery_methods = mysql_query("SELECT * FROM delivery_methods");
+    if (!$query_delivery_methods) {
+        die('Неверный запрос: ' . mysql_error());
+    } else {
+        while ($row = mysql_fetch_assoc($query_delivery_methods)) {
+            array_push($delivery_methods, $row);
+        }
+    }
+    $result["delivery_methods"] = $delivery_methods;
 
     /* Заполнение массива городов доставки */
     $query_cities = mysql_query("SELECT * FROM cities");

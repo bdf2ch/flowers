@@ -51,7 +51,8 @@ html, body {
     a {
       //display: inline-block;
       //padding-top: 7px;
-      margin-top: 7px;
+      //margin-top: 7px;
+      height: 50px;
       margin-left: 10px;
       padding: 5px !important;
       padding-left: 8px !important;
@@ -78,17 +79,18 @@ html, body {
 }
 
   #user {
-    width: 220px;
-    height: 40px;
-    margin-left: 100px;
-    margin-top: 5px;
+    width: 180px;
+    height: 50px;
+    margin-left: 142px;
+    //margin-top: 5px;
     padding: 5px;
-    padding-top: 0px;
+    padding-top: 2px;
     vertical-align: middle;
-    line-height: 15px;
-    //background: rgba(237, 155, 0, 1.0);
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    line-height: 13px;
+    background: rgba(81, 181, 224, 0.6);
+    //background: #B4DCED;
+    //border-top-right-radius: 4px;
+    //border-bottom-right-radius: 4px;
 
     #user-icon {
       position: relative;
@@ -96,10 +98,10 @@ html, body {
       //float: left;
       width: 40px;
       height: 40px;
-      margin-left: -20px;
+      //margin-left: -20px;
       //margin-top: 5px;
       //vertical-align: middle;
-      //margin-top: 2px;
+      margin-top: 3px;
       //margin-right: 5px;
       background: url("../img/man_40px.png") center center;
       background-repeat: no-repeat;
@@ -756,6 +758,112 @@ html, body {
 }
 
 
+
+/*** CONFIRMATION ***/
+#template-confirmation {
+  padding-top: 40px;
+
+  .confirmation-left {
+    padding-right: 20px;
+    border-right: 1px dotted lightgrey;
+  }
+
+  .confirmation-right {
+    padding-left: 20px;
+  }
+
+  .conformation-order-label {
+    line-height: 18px;
+  }
+
+  .confirmation-order-content {
+    margin-bottom: 10px !important;
+    font-style: italic;
+    line-height: 18px;
+  }
+
+  .confirmation-success {
+    margin-bottom: 20px;
+    padding: 30px;
+    background: #d5ecd9;
+    border-radius: 4px;
+    line-height: 18px;
+    font-style: italic;
+
+    .order-success-title {
+      display: block;
+      margin-bottom: 15px;
+      font-family: 'Lobster', cursive;
+      font-size: 26px;
+      font-style: normal;
+      color: #237f35;
+    }
+  }
+
+  .confirmation-account {
+    padding: 30px;
+    background: #B4DCED;
+    border-radius: 4px;
+    line-height: 18px;
+    font-style: italic;
+
+    .confirmation-account-title {
+      display: block;
+      margin-bottom: 15px;
+      font-family: 'Lobster', cursive;
+      font-size: 26px;
+      font-style: normal;
+      color: #134da5;
+    }
+  }
+
+  .confirmation-cart-items {
+    padding-bottom: 10px;
+    padding-right: 20px;
+
+    img {
+      width: 64px;
+      height: 64px;
+      border: 1px solid #FAB83E;
+      border-radius: 64px;
+    }
+  }
+
+  .confirmation-delivery {
+    padding-right: 20px;
+    margin-bottom: 10px !important;
+
+    img {
+      width: 64px;
+      height: 64px;
+      //padding-left: 10px;
+      //margin-left: 10px;
+    }
+  }
+
+  .confirmation-total-price {
+    margin-top: 5px !important;
+    padding-right: 20px;
+    padding-top: 10px;
+    font-size: 24px;
+    border-top: 1px dashed lightgrey;
+
+    .total {
+      font-size: 26px;
+      font-weight: bold;
+    }
+  }
+}
+
+
+
+/*** ACCOUNT ***/
+#template-account {
+  padding-top: 40px;
+  //padding-right: 20px;
+}
+
+
 /*** MISC ***/
 .clip {
   overflow: auto;
@@ -823,10 +931,12 @@ html, body {
 .sidebar-text {
   display: inline-block;
   margin-top: 3px;
-  font-family: 'Lobster', cursive;
-  font-size: 16px;
+  //font-family: 'Lobster', cursive;
+  font-size: 15px;
   line-height: 16px;
-  color: #616161;
+  //color: #616161;
+  font-style: italic;
+  color: black;
 }
 
 .title-image {

@@ -53,7 +53,7 @@
                 </div>
                 <div class="unit-70">
                     <span class="sidebar-leading">Стоимость</span>
-                    <span class="sidebar-text">Мурманск - 350 р. Североморск - бесплатно</span>
+                    <span class="sidebar-text">В Мурманск, Североморск - 350 р.</span>
                 </div>
             </div>
             <div class="units-row end">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="unit-70">
                     <span class="sidebar-leading">Сроки</span>
-                    <span class="sidebar-text">Доставим Ваш заказ в течении 3-х часов</span>
+                    <span class="sidebar-text">Доставим Ваш заказ в течении 2-х часов</span>
                 </div>
             </div>
             <div class="units-row end">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="unit-70">
                     <span class="sidebar-leading">Самовывоз</span>
-                    <span class="sidebar-text">Ежедневно, в нашем офисе, с 11:00 до 19:00</span>
+                    <span class="sidebar-text">Ежедневно, в нашем офисе, круглосуточно</span>
                 </div>
             </div>
         </div>
@@ -176,6 +176,22 @@
                                 ng-model="order.paymentMethodId.value">
                         </select>
                     </label>
+                    <label>
+                        <div class="units-row end">
+                            <div class="unit-100">
+                            <span class="subtitle-caption">
+                                Способ доставки заказа
+                            </span>
+                            </div>
+                        </div>
+                        Способ доставки
+                        <select name="delivery-method"
+                                id="delivery-method"
+                                class="width-100"
+                                ng-options="delivery.id.value as delivery.title.value for delivery in misc.deliveryMethods"
+                                ng-model="order.deliveryMethodId.value">
+                        </select>
+                    </label>
                     <ul class="forms-list">
                         <li>
                             <input type="checkbox" name="customer-is-reciever" id="customer-is-reciever" ng-model="order.customerIsReciever.value" />
@@ -267,6 +283,26 @@
                         Квартира <span class="error right" ng-show="errors.address.flat !== false">{{ errors.address.flat }}</span>
                         <input type="text" name="reciever-address-flat" id="reciever-address-flat" class="width-100" ng-class="{'input-error': errors.address.flat !== false}" placeholder="Квартира" ng-model="order.flat.value" />
                     </label>
+
+                    <div class="units-row end">
+                        <div class="unit-100">
+                            <span class="subtitle-caption">
+                                Срок доставки
+                            </span>
+                        </div>
+                    </div>
+                    <label>
+                        Дата доставки
+                        <input type="text" name="reciever-address-building-index" id="reciever-address-building-index" class="width-100" placeholder="Корпус" ng-model="buildingIndex" />
+                    </label>
+                    <label>
+                        Время доставки <span class="error right" ng-show="errors.address.flat !== false">{{ errors.address.flat }}</span>
+                        <input type="text" name="reciever-address-flat" id="reciever-address-flat" class="width-50" ng-class="{'input-error': errors.address.flat !== false}" placeholder="Квартира" ng-model="order.flat.value" />
+                        <input type="text" name="reciever-address-flat" id="reciever-address-flat" class="width-40" ng-class="{'input-error': errors.address.flat !== false}" placeholder="Квартира" ng-model="order.flat.value" />
+                        <div class="forms-desc">Если не требуется - оставьте это поле пустым.</div>
+                    </label>
+
+
                     <div class="unit-100">
                             <span class="subtitle-caption">
                                 Комментарий к заказу
@@ -277,6 +313,7 @@
                         <textarea id="order-comments" name="order-comments" rows="4" class="width-100" ng-model="order.comment.value"></textarea>
                     </label>
 
+
                 </form>
             </div>
 
@@ -284,9 +321,13 @@
 
 
         <div class="units-row">
-            <div class="unit-100">
-                <button class="btn btn-green btn-big right width-30" ng-click="validate()">Далее</button>
+            <div class="unit-50">
+                <button class="btn btn-yellow btn-big right width-100" ng-click="gotoMain()">Продолжить покупки</button>
             </div>
+            <div class="unit-50">
+                <button class="btn btn-green btn-big right width-100" ng-click="validate()">Перейти к подтверждению заказа</button>
+            </div>
+            <div class="unit-25">&nbsp;</div>
         </div>
 
 
