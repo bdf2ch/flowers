@@ -59,6 +59,13 @@ var filters = angular.module("lotos.filters", [])
             };
         }]);
 
+        /* Фильтр даты */
+        $filterProvider.register("dateview", ["$log", function ($log) {
+            return function (input) {
+                return moment.unix(parseInt(input)).format("DD.MM.YYYY, HH:mm");
+            };
+        }]);
+
     })
     .run(function ($log) {
         $log.log("filters module");

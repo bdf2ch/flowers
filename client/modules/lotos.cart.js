@@ -138,9 +138,13 @@ var cart = angular.module("lotos.cart", [])
 
 
 
-cart.controller("CartController", ["$log", "$scope", "$cart", "$bouquets", function ($log, $scope, $cart, $bouquets) {
+cart.controller("CartController", ["$log", "$scope", "$cart", "$bouquets", "$location", function ($log, $scope, $cart, $bouquets, $location) {
     $scope.cart = $cart;
     $scope.bouquets = $bouquets;
+
+    $scope.gotoOrder = function () {
+        $location.url("/order");
+    };
 
     $log.log("cart controller");
 }]);

@@ -14,6 +14,7 @@ html, body {
 }
 
 #header {
+  overflow-y: visible;
   position: fixed;
   z-index: 4;
   left: 0px;
@@ -32,6 +33,11 @@ html, body {
   border-right: 1px solid lightgrey;
   box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 
+  .header-container {
+    height: 50px;
+    overflow-y: visible;
+  }
+
   #logo {
     position: relative;
     float: left;
@@ -42,35 +48,41 @@ html, body {
 
     img {
       display: block;
-      height: 50px;
-      //margin-top: 10px;
-      margin-left: -25px !important;
+      height: 65px;
+      margin-top: 5px;
+      margin-left: 5px !important;
       //border: 1px solid red;
     }
   }
 
   #menu {
+    margin-left: -40px;
 
     a {
       //display: inline-block;
       //padding-top: 7px;
       //margin-top: 7px;
-      height: 50px;
-      margin-left: 10px;
+      height: 30px;
+      //margin-left: 10px;
+      margin-top: 7px;
       padding: 5px !important;
       padding-left: 8px !important;
       font-family: 'Lobster', cursive;
       font-size: 20px;
       text-decoration: none;
       //line-height: 17px;
-      color: white !important;
-      text-shadow: rgb(0, 0, 0) 0px 1px 0px;
-      border-radius: 5px;
+      color: #BF0F44 !important;
+      //text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+      //border-radius: 5px;
+      border-bottom: 1px dashed #BF0F44;
 
       &:hover {
-        color: #367ac3;
-        background: #51a7c9;
+        color: #2C3D6B;
       }
+    }
+
+    li {
+      margin-right: 20px;
     }
 
   }
@@ -78,12 +90,14 @@ html, body {
 
 #user-panel {
   //background: #FACA70;
+  overflow-y: visible;
+  margin-left: 40px;
 
 }
 
   #user {
     width: 180px;
-    height: 50px;
+    //height: 80px;
     margin-left: 142px;
     //margin-top: 5px;
     padding: 5px;
@@ -132,6 +146,22 @@ html, body {
         &:hover {
           color: #990000;
           border-bottom: 1px dotted #990000;
+        }
+      }
+    }
+
+    #user-login-form {
+      margin-top: 10px;
+
+      form {
+        margin-bottom: 5px;
+
+        input {
+          padding: 3px;
+        }
+
+        #user-login {
+          margin-bottom: 5px;
         }
       }
     }
@@ -201,12 +231,13 @@ html, body {
       display: block;
       height: 50px;
       margin-left: 40px;
-      padding-top: 10px;
+      padding-top: 13px;
       padding-right: 5px;
       text-align: center;
-      //font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-      font-family: 'Lobster', cursive;
-      font-size: 30px;
+      font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+      //font-family: 'Lobster', cursive;
+      font-weight: bold;
+      font-size: 26px;
       //color: #de2c3b;
 
       //border: 1px solid black;
@@ -330,6 +361,11 @@ html, body {
   //
   //background: #FCFCFC;
   //background: url("../img/squares.png") #FEFFFA;
+
+  .pagination-bottom {
+    margin-top: -40px;
+    margin-bottom: 40px;
+  }
 
   .pagination {
     margin-bottom: 10px !important;
@@ -744,7 +780,7 @@ html, body {
   padding-top: 40px;
 
   select {
-    padding: 8px;
+    padding: 7px;
     background: #fff;
     border: 1px solid #ccc;
   }
@@ -835,6 +871,11 @@ html, body {
   .confirmation-delivery {
     padding-right: 20px;
     margin-bottom: 10px !important;
+
+    .delivery {
+      padding-top: 16px;
+      line-height: 14px;
+    }
 
     img {
       width: 64px;
@@ -964,6 +1005,10 @@ html, body {
   font-size: 22px;
   line-height: 45px;
   color: #b2232f;
+}
+
+.inline {
+  display: inline-block !important;
 }
 
 /*** ALIGNS ***/

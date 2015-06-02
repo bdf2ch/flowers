@@ -53,6 +53,7 @@ var lotos = angular.module("lotos", ["ngRoute", "lotos.filters", "lotos.sidebar"
     });
 
 
-lotos.controller("AppController", ["$log", "$scope", "$cart", function ($log, $scope, $cart) {
+lotos.controller("AppController", ["$log", "$scope", "$cart", "$session", function ($log, $scope, $cart, $session) {
     $scope.cart = $cart;
+    $scope.session = $session;
 }]);

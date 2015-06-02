@@ -211,9 +211,10 @@ var bouquets = angular.module("lotos.bouquets", [])
     });
 
 
-bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", "$cart", function ($log, $scope, $bouquets, $cart) {
+bouquets.controller("BouquetsController", ["$log", "$scope", "$bouquets", "$cart", "$session", function ($log, $scope, $bouquets, $cart, $session) {
     $scope.bouquets = $bouquets;
     $scope.cart = $cart;
+    $scope.session = $session;
 
     //if ($scope.bouquets.items.length === 0) {
     //    $scope.bouquets.get();

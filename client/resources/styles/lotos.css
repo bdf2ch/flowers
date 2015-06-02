@@ -9,6 +9,7 @@ body {
   background-attachment: fixed;
 }
 #header {
+  overflow-y: visible;
   position: fixed;
   z-index: 4;
   left: 0px;
@@ -25,6 +26,10 @@ body {
   border-right: 1px solid lightgrey;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
+#header .header-container {
+  height: 50px;
+  overflow-y: visible;
+}
 #header #logo {
   position: relative;
   float: left;
@@ -33,28 +38,36 @@ body {
 }
 #header #logo img {
   display: block;
-  height: 50px;
-  margin-left: -25px !important;
+  height: 65px;
+  margin-top: 5px;
+  margin-left: 5px !important;
+}
+#header #menu {
+  margin-left: -40px;
 }
 #header #menu a {
-  height: 50px;
-  margin-left: 10px;
+  height: 30px;
+  margin-top: 7px;
   padding: 5px !important;
   padding-left: 8px !important;
   font-family: 'Lobster', cursive;
   font-size: 20px;
   text-decoration: none;
-  color: white !important;
-  text-shadow: #000000 0px 1px 0px;
-  border-radius: 5px;
+  color: #BF0F44 !important;
+  border-bottom: 1px dashed #BF0F44;
 }
 #header #menu a:hover {
-  color: #367ac3;
-  background: #51a7c9;
+  color: #2C3D6B;
+}
+#header #menu li {
+  margin-right: 20px;
+}
+#header #user-panel {
+  overflow-y: visible;
+  margin-left: 40px;
 }
 #header #user {
   width: 180px;
-  height: 50px;
   margin-left: 142px;
   padding: 5px;
   padding-top: 2px;
@@ -91,6 +104,18 @@ body {
 #header #user #user-info a:hover {
   color: #990000;
   border-bottom: 1px dotted #990000;
+}
+#header #user #user-login-form {
+  margin-top: 10px;
+}
+#header #user #user-login-form form {
+  margin-bottom: 5px;
+}
+#header #user #user-login-form form input {
+  padding: 3px;
+}
+#header #user #user-login-form form #user-login {
+  margin-bottom: 5px;
 }
 #header #cart {
   position: relative;
@@ -137,11 +162,12 @@ body {
   display: block;
   height: 50px;
   margin-left: 40px;
-  padding-top: 10px;
+  padding-top: 13px;
   padding-right: 5px;
   text-align: center;
-  font-family: 'Lobster', cursive;
-  font-size: 30px;
+  font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 26px;
 }
 #wrapper {
   margin-left: auto;
@@ -196,6 +222,10 @@ body {
   margin-bottom: -50px;
   padding-top: 0px;
   padding: 10px;
+}
+#content .pagination-bottom {
+  margin-top: -40px;
+  margin-bottom: 40px;
 }
 #content .pagination {
   margin-bottom: 10px !important;
@@ -489,7 +519,7 @@ body {
   padding-top: 40px;
 }
 #template-order select {
-  padding: 8px;
+  padding: 7px;
   background: #fff;
   border: 1px solid #ccc;
 }
@@ -564,6 +594,10 @@ body {
 #template-confirmation .confirmation-delivery {
   padding-right: 20px;
   margin-bottom: 10px !important;
+}
+#template-confirmation .confirmation-delivery .delivery {
+  padding-top: 16px;
+  line-height: 14px;
 }
 #template-confirmation .confirmation-delivery img {
   width: 64px;
@@ -663,6 +697,9 @@ body {
   font-size: 22px;
   line-height: 45px;
   color: #b2232f;
+}
+.inline {
+  display: inline-block !important;
 }
 /*** ALIGNS ***/
 .left {

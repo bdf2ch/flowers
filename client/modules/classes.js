@@ -194,7 +194,7 @@ function Order () {
     this.customerIsReciever = new Field({ source: "customer_is_reciever", value: true });
     this.created = new Field({ source: "created", value: 0 });
     this.deliveryStart = new Field({ source: "delivery_start_period", value: 0 });
-    this.deliveryEnd = new Field({ source: "delivery_end_periof", value: 0 });
+    this.deliveryEnd = new Field({ source: "delivery_end_period", value: 0 });
     this.bouquets = [];
 
     this.fromJSON = function (JSONdata) {

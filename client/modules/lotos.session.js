@@ -8,6 +8,11 @@ var session = angular.module("lotos.session", ["ngCookies"])
 
             module.controller = "server/controllers/session.php";
             module.user = new User();
+            module.inLoginMode = false;
+            module.username = "";
+            module.password = "";
+            module.username_error = "";
+            module.password_error = "";
 
             module.getUserById = function (userId) {
                 if (userId !== undefined) {
@@ -23,6 +28,29 @@ var session = angular.module("lotos.session", ["ngCookies"])
                             module.user.fromJSON(data);
                         }
                     );
+                }
+            };
+
+            module.loginMode = function () {
+                module.inLoginMode = !module.inLoginMode;
+                module.username = "";
+                module.password = "";
+                module.username_error = "";
+                module.password_error = "";
+            };
+
+            module.login = function () {
+                $log.log("login");
+
+                module.username_error = "";
+                module.password_error = "";
+
+                if (module.username === "") {
+                    module.username_error = "Вы не указали имя пользователя";
+                }
+
+                if (module.password === "") {
+                    module.password_error = "Вы не указали пароль";
                 }
             };
 
